@@ -1,0 +1,182 @@
+nav a{
+  
+  padding:20px;
+  padding-bottom:4px;
+  /*color : green;*/
+  font-size: 1.8em;
+  /*background-color: #8FAAB3;*/
+ /* border-top-left-radius:70px;
+  /*border-top-right-radius:10px;*/
+  
+}
+nav a:hover, #currentPage{ /*pseudo class*/
+  background-color: #81B14F;
+  font-size: 2em;
+  transition: .2s;
+   text-align: center;
+  
+}
+body,main, nav, footer{
+  /*width: 960px;*/
+  /*margin: 0 auto;*/ /* This aligns the section in the center */
+  
+}
+
+body{
+  font-family:Trebuchet MS;
+  /*background-color: Cyan;*/
+  /*background: #C4BD8B; */
+    text-align: center;
+    background: url(img/park.jpg) no-repeat center center fixed; 
+
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: auto;
+}
+
+.intro{
+   margin: 1cm 5cm;
+    border-top-left-radius:175px;
+    border-top-right-radius:175px;
+    border-bottom-left-radius: 175px;
+    border-bottom-right-radius: 175px;
+    padding:20px;
+    padding-bottom:4px;
+  
+}
+
+
+
+.list
+{
+    margin: 1cm 8cm;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th, tr {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+      background-color: #dddddd;
+}
+
+.tables{
+   margin: 1cm 8cm; 
+}
+
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.add {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    /*top, right, bottom, left */
+    padding: 0px 25px 0px 25px;
+  
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+   
+    font-size: 85px;
+    margin: 2px 2px;
+    cursor: pointer;
+    border-top-left-radius:175px;
+    border-top-right-radius:175px;
+    border-bottom-left-radius: 175px;
+    border-bottom-right-radius: 175px;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    
+    
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+     
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+     
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+   
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+ 
+}
+
+.modal-body {
+    padding: 2px 16px;
+    background-color: white;
+  
+}
+
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+   
+}

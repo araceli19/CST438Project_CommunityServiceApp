@@ -1,10 +1,11 @@
-DROP TABLE Website_Operator;
-DROP TABLE Volunteer_Organization;
-DROP TABLE Volunteer;
-DROP TABLE Pending_Post;
-DROP TABLE Available_Services;
-DROP TABLE Current_Volunteers;
 DROP Table Pending_Volunteers;
+DROP TABLE Current_Volunteers;
+DROP TABLE Available_Services;
+DROP TABLE Pending_Post;
+DROP TABLE Volunteer;
+DROP TABLE Volunteer_Organization;
+DROP TABLE Website_Operator;
+
 
 CREATE TABLE Website_Operator(
 	ID INT PRIMARY KEY AUTO_INCREMENT,
@@ -110,4 +111,3 @@ INSERT INTO Current_Volunteers(Volunteer_ID, Hours)
 VALUES (2, 8);
 INSERT INTO Current_Volunteers(Volunteer_ID, Hours)
 VALUES (3, 10);
-

@@ -1,8 +1,8 @@
 DROP Table Pending_Volunteers;
-DROP TABLE Current_Volunteers;
 DROP TABLE Available_Services;
 DROP TABLE Pending_Post;
 DROP TABLE Volunteer;
+DROP TABLE Current_Volunteers;
 DROP TABLE Volunteer_Organization;
 DROP TABLE Website_Operator;
 

@@ -1,10 +1,10 @@
-DROP Table IF EXISTS Pending_Volunteers;
-DROP TABLE IF EXISTS Available_Services;
-DROP TABLE IF EXISTS Pending_Post;
-DROP TABLE IF EXISTS Volunteer;
-DROP TABLE IF EXISTS Current_Volunteers;
-DROP TABLE IF EXISTS Volunteer_Organization;
-DROP TABLE IF EXISTS Website_Operator;
+-- DROP TABLE IF EXISTS Pending_Volunteers;
+-- DROP TABLE IF EXISTS Available_Services;
+-- DROP TABLE IF EXISTS Pending_Post;
+-- DROP TABLE IF EXISTS Volunteer;
+-- DROP TABLE IF EXISTS Current_Volunteers;
+-- DROP TABLE IF EXISTS Volunteer_Organization;
+-- DROP TABLE IF EXISTS Website_Operator;
 
 
 CREATE TABLE Website_Operator(

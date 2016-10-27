@@ -1,0 +1,9 @@
+test:
+	override:
+	 - mvn verify
+	post: 
+	 - mkdir -p $CIRCLE_TEST_REPORTS/reports/
+	 - cp ./*/*-repost/*.xml $CIRCLE_TEST_REPORTS/reports/
+        notify: 
+	  webhooks:
+	   -url: http://csumbse.net/harbormaster/hook/circleci/

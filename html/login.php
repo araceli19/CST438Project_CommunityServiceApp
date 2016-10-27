@@ -83,7 +83,7 @@ session_start();
          <nav>
          <a href= "login.php" id="currentPage">Home</a>
          <a href= "testing.php">Services</a>
-         <a href= "volunteer_profile.html">My Profile</a> 
+         <a href= "volunteer_profile.html">My Profile</a>
          <a href= "contactUs.html">Contact Us</a>
 
          </nav>

@@ -3,7 +3,11 @@ test:
 	 - mvn verify
 	post: 
 	 - mkdir -p $CIRCLE_TEST_REPORTS/reports/
+<<<<<<< HEAD
 	 - cp ./*/*-reports/*.xml $CIRCLE_TEST_REPORTS/reports/
+=======
+	 - cp ./*/*-repost/*.xml $CIRCLE_TEST_REPORTS/reports/
+>>>>>>> 1751202194e3db521d1993aa730852412e7140eb
         notify: 
 	  webhooks:
 	   -url: http://csumbse.net/harbormaster/hook/circleci/

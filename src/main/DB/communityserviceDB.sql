@@ -54,7 +54,7 @@ FOREIGN KEY (Organization_ID) REFERENCES Volunteer_Organization (ID)
 
 CREATE TABLE Current_Volunteers(
 	Volunteer_ID INT(6) NOT NULL,
-	Available_Service_ID INT(6) NOT NULL,
+	Available_Service_ID VARCHAR(6) NOT NULL,
 	Hours DOUBLE(3, 2),
 	INDEX (Volunteer_ID),
 	INDEX(Available_Service_ID),
@@ -79,21 +79,25 @@ FOREIGN KEY (Available_ID) REFERENCES Available_Services (ID) ON UPDATE CASCADE 
 
 )ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-INSERT INTO Website_Operator VALUES (1, 'Tom B. Erichsen','(831)222-2222','Stavanger@gmail.com','4006Norway');
-INSERT INTO Website_Operator VALUES(2, 'Liliana Jones','(831)123-2532', 'LilyJ@gmail.com','4005France');
+INSERT INTO Website_Operator (Name, Phone_Num, Email, Password) VALUES ('Tom B. Erichsen','(831)222-2222','Stavanger@gmail.com','4006Norway');
+INSERT INTO Website_Operator (Name, Phone_Num, Email, Password) VALUES('Liliana Jones','(831)123-2532', 'LilyJ@gmail.com','4005France');
+INSERT INTO Website_Operator (Name, Phone_Num, Email, Password) VALUES('Bob Smith', '(831)732-4021', 'BobS@gmail.com', '5678Cat');
 
-INSERT INTO Volunteer_Organization VALUES(1, 'Andrea Humer', 'Otter Express', '(831)122-1234', 'ottterE@yahoo.com', '123London');
-INSERT INTO Volunteer_Organization VALUES(2, 'Miriam London', 'Monterey Bay Aquarium', '(831)130-1744', 'MLondon@hotmail.com', '123Louisiana');
+INSERT INTO Volunteer_Organization (Contact_name, Org_Name, Phone_Num, Email, Password) VALUES('Andrea Humer', 'Otter Express', '(831)122-1234', 'ottterE@yahoo.com', '123London');
+INSERT INTO Volunteer_Organization (Contact_name, Org_Name, Phone_Num, Email, Password) VALUES('Miriam London', 'Monterey Bay Aquarium', '(831)130-1744', 'MLondon@hotmail.com', '123Louisiana');
+INSERT INTO Volunteer_Organization (Contact_name, Org_Name, Phone_Num, Email, Password) VALUES('Mayra Coloma', 'Boys and Girls Club', '(431)567-1358', 'gabc@yahoo.com', 'pass123');
 
-INSERT INTO Volunteer VALUES(1, 'Cecilia Perez', '12-04-1998', 'Seaside High School', 27493, 0, '(563)593-5859');
-INSERT INTO Volunteer VALUES(2, 'Ozi Benini', '03-14-2003', 'Palma Middle School', 78420, 8, '(612)502-5256');
-INSERT INTO Volunteer VALUES(3, 'Jess Noel', '07-28-1991', 10, '(562)384-1596');
+INSERT INTO Volunteer (Name, DOB, School, School_ID, Hours, Phone_Num) VALUES('Cecilia Perez', '12-04-1998', 'Seaside High School', 27493, 0, '(563)593-5859');
+INSERT INTO Volunteer (Name, DOB, School, School_ID, Hours, Phone_Num) VALUES('Ozi Benini', '03-14-2003', 'Palma Middle School', 78420, 8, '(612)502-5256');
+INSERT INTO Volunteer (Name, DOB, Hours, Phone_Num) VALUES('Jess Noel', '07-28-1991', 10, '(562)384-1596');
+INSERT INTO Volunteer (Name, DOB, Hours, Phone_Num) VALUES('Irais Chino', '07-05-1990', 27, '(231)952-8521');
 
-INSERT INTO Pending_Post VALUES(2, 'Pending');
- INSERT INTO Pending_Post VALUES(1, 'Approved');
+INSERT INTO Pending_Post (Provider_ID, Status) VALUES(2, 'Pending');
+INSERT INTO Pending_Post (Provider_ID, Status) VALUES(1, 'Approved');
+INSERT INTO Pending_Post (Provider_ID, Status) VALUES(3, 'Pending');
 
-INSERT INTO  Available_Services VALUES(1, 10, 5, 'Students needed to tutor first graders', 'Tutoring at Grace Elementary', '(347)390-0851');
-INSERT INTO  Available_Services VALUES(2, 5, 10, 'Community members needed to help with beach cleaning', 'Beach cleaning day', '(714)361-2381');
-\
-INSERT INTO Current_Volunteers VALUES (2, 8);
-INSERT INTO Current_Volunteers VALUES (3, 10);
+INSERT INTO  Available_Services (Organization_ID, Hours_Available, Volunteers_Needed, Description, Name_Of_Service, Phone_Num) VALUES(1, 10, 5, 'Students needed to tutor first graders', 'Tutoring at Grace Elementary', '(347)390-0851');
+INSERT INTO  Available_Services (Organization_ID, Hours_Available, Volunteers_Needed, Description, Name_Of_Service, Phone_Num) VALUES(2, 5, 10, 'Community members needed to help with beach cleaning', 'Beach cleaning day', '(714)361-2381');
+
+INSERT INTO Current_Volunteers (Volunteer_ID, Available_Service_ID) VALUES (2, '8');
+INSERT INTO Current_Volunteers (Volunteer_ID, Available_Service_ID) VALUES (3, '10');

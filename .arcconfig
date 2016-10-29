@@ -1,8 +1,4 @@
 {
   "conduit_uri" : "https://reviews.facebook.net/api/",
-<<<<<<< HEAD
   "conduit_uri" : "http://csumbse.net/api"
-=======
-  "conduit_uri" : "https://csumbse.net/api"
->>>>>>> 1751202194e3db521d1993aa730852412e7140eb
 }

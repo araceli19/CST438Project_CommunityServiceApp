@@ -1,4 +1,4 @@
-package edu.csumb.mysqlexample;
+
 
 import org.junit.*;
 
@@ -7,7 +7,7 @@ import java.io.IOException;
 import static org.junit.Assert.*;
 
 /**
- * Created by nathanieldavidson on 10/13/16.
+ * 
  */
 public class IdDataTableIT {
     private static final String TABLE_NAME = "Volunteer";

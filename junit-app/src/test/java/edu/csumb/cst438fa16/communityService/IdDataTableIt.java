@@ -7,7 +7,7 @@ import java.io.IOException;
 import static org.junit.Assert.*;
 
 /**
- * 
+ *
  */
 public class IdDataTableIT {
     private static final String TABLE_NAME = "Volunteer";
@@ -42,7 +42,7 @@ public class IdDataTableIT {
     public void createAndVerifyMovie(){
         String Name = table.insert("Elsa");
         String DOB = table.insert("10/30/2000");
-        Striing School = table.insert("La Vista");
+        String School = table.insert("La Vista");
         int School_ID = table.insert(133);
         double Hours = table.insert(3.4);
         String  Phone_Num = table.insert("(831)444-222");
@@ -56,14 +56,6 @@ public class IdDataTableIT {
     /*
         Create movie, then delete the movie, then make sure that the row does not exist
      */
-    @Test
-    public void deletedMovie(){
-        int ID = table.insert(5);
-
-        table.delete(id);
-
-        assertNull(table.get(id));
-    }
 
     /*
         Create movie entry, update dataStored, make sure the update held
@@ -73,7 +65,7 @@ public class IdDataTableIT {
 
       String Name = table.insert("Hello");
       String DOB = table.insert("10/30/2000");
-      Striing School = table.insert("None");
+      String School = table.insert("None");
       int School_ID = table.insert(1333);
       double Hours = table.insert(3.4);
       String  Phone_Num = table.insert("(831)444-222");

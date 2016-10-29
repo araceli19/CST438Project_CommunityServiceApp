@@ -81,19 +81,26 @@ FOREIGN KEY (Available_ID) REFERENCES Available_Services (ID) ON UPDATE CASCADE 
 
 INSERT INTO Website_Operator VALUES (1, 'Tom B. Erichsen','(831)222-2222','Stavanger@gmail.com','4006Norway');
 INSERT INTO Website_Operator VALUES(2, 'Liliana Jones','(831)123-2532', 'LilyJ@gmail.com','4005France');
+INSERT INTO Website_Operator VALUES(3, 'Bob Smith', '(831)732-4021', 'BobS@gmail.com', '5678Cat');
 
 INSERT INTO Volunteer_Organization VALUES(1, 'Andrea Humer', 'Otter Express', '(831)122-1234', 'ottterE@yahoo.com', '123London');
 INSERT INTO Volunteer_Organization VALUES(2, 'Miriam London', 'Monterey Bay Aquarium', '(831)130-1744', 'MLondon@hotmail.com', '123Louisiana');
+INSERT INTO Volunteer_Organization VALUES(3, 'Mayra Coloma', 'Boys and Girls Club', '(431)567-1358', 'gabc@yahoo.com', 'pass123');
+
 
 INSERT INTO Volunteer VALUES(1, 'Cecilia Perez', '12-04-1998', 'Seaside High School', 27493, 0, '(563)593-5859');
 INSERT INTO Volunteer VALUES(2, 'Ozi Benini', '03-14-2003', 'Palma Middle School', 78420, 8, '(612)502-5256');
 INSERT INTO Volunteer VALUES(3, 'Jess Noel', '07-28-1991', 10, '(562)384-1596');
+INSERT INTO Volunteer VALUES(4, 'Irais Chino', '07-05-1990', 27, '(231)952-8521');
+
 
 INSERT INTO Pending_Post VALUES(2, 'Pending');
- INSERT INTO Pending_Post VALUES(1, 'Approved');
+INSERT INTO Pending_Post VALUES(1, 'Approved');
+INSERT INTO Pending_Post VALUES(3, 'Pending');
+
 
 INSERT INTO  Available_Services VALUES(1, 10, 5, 'Students needed to tutor first graders', 'Tutoring at Grace Elementary', '(347)390-0851');
 INSERT INTO  Available_Services VALUES(2, 5, 10, 'Community members needed to help with beach cleaning', 'Beach cleaning day', '(714)361-2381');
-\
+
 INSERT INTO Current_Volunteers VALUES (2, 8);
 INSERT INTO Current_Volunteers VALUES (3, 10);

@@ -1,12 +1,16 @@
 machine:
-  php:
-    version: 5.6.24
-test:
-  override:
-     - vendor/bin/phpunit --configuration configuration/test.xml
+  services:
+    - mysql
+database:
+  pre:
 
-  post:
-    - bash <(curl -s https://codecov.io/bash)
-        notify:
-	  webhooks:
-	   - url: http://csumbse.net/harbormaster/hook/circleci/
+    # installing mysql 5.6 (5.5 is installed by default)
+    - export DEBIAN_FRONTEND=noninteractive
+      && sudo apt-get -y remove mysql-server && sudo apt-get -y autoremove
+      && sudo apt-get -y install software-properties-common
+      && sudo apt-add-repository -y 'deb http://ppa.launchpad.net/ondrej/mysql-experimental/ubuntu precise main'
+      && sudo apt-get update
+      && sudo apt-get -y install mysql-server
+    - echo -e "[mysqld]\ninnodb_file_format = Barracuda\ninnodb_large_prefix = 1" | sudo sh -c "cat >> /etc/mysql/my.cnf"
+    - sudo cat /etc/mysql/my.cnf
+    - sudo service mysql restart

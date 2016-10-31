@@ -27,11 +27,17 @@ body{
   /*background-color: Cyan;*/
   /*background: #C4BD8B; */
     text-align: center;
-    background: url(img/park.jpg) no-repeat center center fixed; 
+    background: url(park.jpg) no-repeat center center fixed; 
+   
+    
 
     background-repeat: no-repeat;
     background-attachment: fixed;
     overflow: auto;
+}
+
+img{
+     opacity: 0.5;
 }
 
 .intro{

@@ -1,38 +1,82 @@
-package edu.csumb.cst438fa16.communityService;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+
+import org.junit.*;
+
+import java.io.IOException;
+
+import static org.junit.Assert.*;
 
 /**
- * Unit test for simple App.
+ *
  */
-public class AppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
+public class IdDataTableIT {
+    private static final String TABLE_NAME = "Volunteer";
+    private DBController controller;
+    private IdDataTable table;
+    @Before
+    public void ConnectToDB() throws IOException{
+        controller = new DBController();
+        table = new IdDataTable(TABLE_NAME, controller);
+        table.dropTable();
+        table.createTable();
+    }
+    @After
+    public void disconnect(){
+        table.dropTable();
+        controller.close();
     }
 
-    /**
-     * @return the suite of tests being tested
+    /*
+        Create movie wait for confirmation from AWS
      */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
+    @Test
+    public void createNewMovie(){
+        assertNotEquals(table.insert("Anna"), -1);
     }
 
-    /**
-     * Rigourous Test :-)
+
+    /*
+        Create movie and then check to see if the movie exists by comparing dataStored
      */
-    public void testApp()
-    {
-        assertTrue( true );
+    @Test
+    public void createAndVerifyMovie(){
+        String Name = table.insert("Elsa");
+        String DOB = table.insert("10/30/2000");
+        String School = table.insert("La Vista");
+        int School_ID = table.insert(133);
+        double Hours = table.insert(3.4);
+        String  Phone_Num = table.insert("(831)444-222");
+
+        String data = table.get(Name);
+
+        assertTrue(data.equals("Elsa"));
+      //  assertTrue()
+    }
+
+    /*
+        Create movie, then delete the movie, then make sure that the row does not exist
+     */
+
+    /*
+        Create movie entry, update dataStored, make sure the update held
+     */
+    @Test
+    public void updateMovieRecordConfirm(){
+
+      String Name = table.insert("Hello");
+      String DOB = table.insert("10/30/2000");
+      String School = table.insert("None");
+      int School_ID = table.insert(1333);
+      double Hours = table.insert(3.4);
+      String  Phone_Num = table.insert("(831)444-222");
+
+
+
+        table.update(Name, "Hello");
+
+        String data = table.get(Name);
+
+        assertNotNull(data);
+        assertTrue(data.equals("Hello"));
     }
 }

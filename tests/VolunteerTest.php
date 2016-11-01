@@ -4,7 +4,6 @@ include_once("dbConnection.php");
 
 class VolunteerTest extends TestCase
 {
-
     public function test_insert(){
         $volunteer1 = new dbConnection();
 
@@ -30,5 +29,4 @@ class VolunteerTest extends TestCase
         $this->assertTrue(true);
     }
 }
-
 ?>

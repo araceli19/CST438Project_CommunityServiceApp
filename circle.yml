@@ -18,7 +18,7 @@ machine:
 dependencies:
   pre:
     - rm /opt/circleci/php/$(phpenv global)/etc/conf.d/xdebug.ini
-
+    - composer update --prefer-stable --prefer-lowest --no-interaction
 database:
   override:
     - mysql -u ubuntu circle_test < tests/test.sql

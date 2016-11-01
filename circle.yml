@@ -1,12 +1,31 @@
 machine:
   php:
-    version: 5.6.24
-test:
-override:
-    - vendor/bin/phpunit --configuration testing-circle.xml --no-configuration
+    version: 7.0.4
+
+  services:
+    - mysql
+
+  hosts:
+    athliit.app: 127.0.0.1
+
+  environment:
+    APP_ENV: testing
+    APP_URL: 127.0.0.1
+    DB_HOST: 127.0.0.1
+    DB_URL: 127.0.0.1
+    DB_NAME: circle_test
+    DB_USER: ubuntu
+dependencies:
+  pre:
+    - rm /opt/circleci/php/$(phpenv global)/etc/conf.d/xdebug.ini
+
+database:
+  override:
+    - mysql -u ubuntu circle_test < tests/test.sql
+    - mkdir -p $CIRCLE_TEST_REPORTS/phpunit
+    - phpunit --log-junit $CIRCLE_TEST_REPORTS/phpunit/junit.xml tests
   post:
     - bash <(curl -s https://codecov.io/bash)
-
-  notify:
-	  webhooks:
-	   - url: http://csumbse.net/harbormaster/hook/circleci/
+notify:
+  webhooks:
+    - url: http://csumbse.net/harbormaster/hook/circleci/

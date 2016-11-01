@@ -22,7 +22,6 @@ class VolunteerTest extends TestCase
 
         $data1 = $volunteer1::selectVolunteer("Noemi");
 
-      //  $this->assertEquals($data1,"Noemi");
     }
     public function test_getAll(){
         $volunteer1 = new dbConnection();

@@ -1,6 +1,7 @@
 
 <?php
-
+//testing Website Operator, back en query connection
+//connect to database
 include_once("Database.php");
 class WebsiteOperatorConn{
 
@@ -12,6 +13,7 @@ class WebsiteOperatorConn{
     public static $Password;
 
 
+//insert data, using query
     public static function insertDataWebsiteOp($Name, $Phone_Num, $Email, $Password)
     {
         $db = Database::setConnection();
@@ -29,6 +31,7 @@ class WebsiteOperatorConn{
             }
 
     }
+    //remove one operator
     public static function removeWebsiteOp($Name, $Phone_Num, $Email, $Password){
   $db = Database::setConnection();
 
@@ -42,6 +45,7 @@ class WebsiteOperatorConn{
                     return false;
                 }
     }
+    //select only one
     public static function selectWebsiteOp($Name){
 
       $db = Database::setConnection();
@@ -61,6 +65,7 @@ class WebsiteOperatorConn{
             return "";
         }
     }
+    //retrieve all 
     public static function getAllWebsiteOp(){
       $db = Database::setConnection();
 

@@ -1,4 +1,6 @@
 <?php
+
+//conection to database with user name and password
 class Database{
         private static $pdo = NULL;
         private function __construct() {}

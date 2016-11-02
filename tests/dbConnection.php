@@ -1,5 +1,6 @@
 <?php
 
+//connects to volunter database
 include_once("Database.php");
 class dbConnection{
    public static $ID;

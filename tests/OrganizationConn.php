@@ -1,17 +1,18 @@
 <?php
+//will test the Volunteer Organization table
 
-include_once("Database.php");
+include_once("Database.php"); //connects to the database
 class OrganizationConn{
 
 
-   public static $ID;
+    public static $ID;
     public static $Contact_name;
     public static $Org_Name;
     public static $Phone_Num;
     public static $Email;
     public static $Password;
 
-
+//testing begins with inserting data to Volunteer Organization
     public static function insertDataOrg($Contact_name, $Org_Name, $Phone_Num, $Email, $Password)
     {
         $db = Database::setConnection();
@@ -21,7 +22,7 @@ class OrganizationConn{
 
             $val = $db->prepare($sql);
 
-            if($val->execute()){
+            if($val->execute()){ //if it was executed
                 return true;
             }
             else{
@@ -29,6 +30,7 @@ class OrganizationConn{
             }
 
     }
+    //test removal of organizaion
     public static function removeVolunteerOrg($Contact_name, $Org_Name, $Phone_Num, $Email, $Password){
   $db = Database::setConnection();
 
@@ -42,6 +44,7 @@ class OrganizationConn{
                     return false;
                 }
     }
+    //selects only one organizaion
     public static function selectVolunteerOrg($Contact_name){
 
       $db = Database::setConnection();
@@ -61,6 +64,7 @@ class OrganizationConn{
             return "";
         }
     }
+    //retrieves all organization 
     public static function getAllOrg(){
       $db = Database::setConnection();
 

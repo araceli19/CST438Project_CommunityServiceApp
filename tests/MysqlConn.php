@@ -1,4 +1,6 @@
 <?php
+//copy of db connection
+//same as Database.php
 class MysqlConn{
         private static $pdo = NULL;
         private function __construct() {}

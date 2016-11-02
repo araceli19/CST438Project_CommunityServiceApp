@@ -1,4 +1,8 @@
 <?php
+//test Volunteer table
+//adding mock data:
+//Start by inserting data and then test deletion, selection one and selection all Volunteers
+
 use PHPUnit\Framework\TestCase;
 include_once("dbConnection.php");
 

@@ -37,6 +37,16 @@ public class GoogleLoginIT
 		driver.findElement(By.id("email")).sendKeys("greatestever319@gmail.com"));
 		driver.findElement(By.id("password")).sendKeys("science831!"));
 
+		assertTrue(driver.findElement(By.id("email")).equals("greatestever319@gmail.com"));
+
+	}
+
+	@Test //information is received
+	public void testReceive()
+	{
+		driver.findElement(By.id("Get Info")).click();
+		driver.findElement(By.id("email").sendKeys("greatestever319@gmail.com"));
+		assertTrue(driver.findElement(By.id("email")).equals("greatestever319@gmail.com"));
 	}
 
 }

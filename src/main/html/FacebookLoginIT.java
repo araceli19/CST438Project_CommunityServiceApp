@@ -33,8 +33,14 @@ public class FacebookLoginIT {
         driver.findElement(By.id("Login")).click();
         driver.findElement(By.id("phone").sendKeys("8312623191")); //check phone number
         driver.findElement(By.id("password").sendKeys("science831!")); //check email
-
         assertTrue(driver.findElement(By.id("phone")).equals("8312623191"));
+    }
+
+    @Test //test received information
+    public void testGetInfo() { //should happen after login
+      driver.findElement(By.id("Get Info")).click();
+      driver.findElement(By.id("id").sendKeys("141777212964261")) //receive name, id
+      assertTrue(driver.findElement(By.id("id")).equals("141777212964261"));
     }
 
 }

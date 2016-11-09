@@ -2,3 +2,4 @@
 target/junit-app-1.0-SNAPSHOT.jar
 target/maven-archiver/pom.properties
 src/test/java/edu/csumb/dbtest/GetCredentials.java
+target

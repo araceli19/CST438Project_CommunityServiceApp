@@ -1,4 +1,5 @@
 <?php
+//this file connects to database
     function getDatabaseConnection(){
     $host = "127.0.0.1";
     //$host= "localhost";

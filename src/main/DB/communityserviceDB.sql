@@ -1,10 +1,10 @@
--- DROP TABLE IF EXISTS Pending_Volunteers;
--- DROP TABLE IF EXISTS Available_Services;
--- DROP TABLE IF EXISTS Pending_Post;
--- DROP TABLE IF EXISTS Volunteer;
--- DROP TABLE IF EXISTS Current_Volunteers;
--- DROP TABLE IF EXISTS Volunteer_Organization;
--- DROP TABLE IF EXISTS Website_Operator;
+ DROP TABLE IF EXISTS Pending_Volunteers;
+ DROP TABLE IF EXISTS Available_Services;
+ DROP TABLE IF EXISTS Pending_Post;
+ DROP TABLE IF EXISTS Volunteer;
+ DROP TABLE IF EXISTS Current_Volunteers;
+ DROP TABLE IF EXISTS Volunteer_Organization;
+ DROP TABLE IF EXISTS Website_Operator;
 
 
 CREATE TABLE Website_Operator(
@@ -31,7 +31,7 @@ ID INT(6) PRIMARY KEY AUTO_INCREMENT,
 	DOB VARCHAR(10) NOT NULL,
 	School VARCHAR(30),
 	School_ID INT(6),
-	Hours DOUBLE(3, 2) NOT NULL,
+	Hours DOUBLE(10,2) NOT NULL,
 	Phone_Num VARCHAR (13) NOT NULL
 )ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -44,7 +44,7 @@ CREATE TABLE Pending_Post(
 CREATE TABLE Available_Services(
 ID INT(6) PRIMARY KEY NOT NULL AUTO_INCREMENT,
 Organization_ID INT(6),
-Hours_Available DOUBLE(3, 2) NOT NULL,
+Hours_Available DOUBLE(10,2) NOT NULL,
 Volunteers_Needed INT(3) NOT NULL,
 Description VARCHAR(200) NOT NULL,
 Name_Of_Service VARCHAR(50) NOT NULL,
@@ -55,14 +55,13 @@ FOREIGN KEY (Organization_ID) REFERENCES Volunteer_Organization (ID)
 CREATE TABLE Current_Volunteers(
 	Volunteer_ID INT(6) NOT NULL,
 	Available_Service_ID VARCHAR(6) NOT NULL,
-	Hours DOUBLE(3, 2),
+	Hours DOUBLE(10,2),
 	INDEX (Volunteer_ID),
 	INDEX(Available_Service_ID),
 
 	FOREIGN KEY(Volunteer_ID)
 		REFERENCES Volunteer(ID) ON UPDATE CASCADE ON DELETE RESTRICT,
-		FOREIGN KEY(Available_Service_ID)
-		REFERENCES Available_Services (ID)
+	FOREIGN KEY(Available_Service_ID)	REFERENCES Available_Services (ID)
 )ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 
@@ -88,16 +87,17 @@ INSERT INTO Volunteer_Organization (Contact_name, Org_Name, Phone_Num, Email, Pa
 INSERT INTO Volunteer_Organization (Contact_name, Org_Name, Phone_Num, Email, Password) VALUES('Mayra Coloma', 'Boys and Girls Club', '(431)567-1358', 'gabc@yahoo.com', 'pass123');
 
 INSERT INTO Volunteer (Name, DOB, School, School_ID, Hours, Phone_Num) VALUES('Cecilia Perez', '12-04-1998', 'Seaside High School', 27493, 0, '(563)593-5859');
-INSERT INTO Volunteer (Name, DOB, School, School_ID, Hours, Phone_Num) VALUES('Ozi Benini', '03-14-2003', 'Palma Middle School', 78420, 8, '(612)502-5256');
-INSERT INTO Volunteer (Name, DOB, Hours, Phone_Num) VALUES('Jess Noel', '07-28-1991', 10, '(562)384-1596');
-INSERT INTO Volunteer (Name, DOB, Hours, Phone_Num) VALUES('Irais Chino', '07-05-1990', 27, '(231)952-8521');
+INSERT INTO Volunteer (Name, DOB, School, School_ID, Hours, Phone_Num) VALUES('Ozi Benini', '03-14-2003', 'Palma Middle School', 78420, 8.5, '(612)502-5256');
+INSERT INTO Volunteer (Name, DOB, Hours, Phone_Num) VALUES('Jess Noel', '07-28-1991', 10.2, '(562)384-1596');
+INSERT INTO Volunteer (Name, DOB, Hours, Phone_Num) VALUES('Irais Chino', '07-05-1990', 27.2, '(231)952-8521');
 
-INSERT INTO Pending_Post (Provider_ID, Status) VALUES(2, 'Pending');
-INSERT INTO Pending_Post (Provider_ID, Status) VALUES(1, 'Approved');
-INSERT INTO Pending_Post (Provider_ID, Status) VALUES(3, 'Pending');
+
+INSERT INTO Pending_Post (Provider_ID, Status) VALUES(2, 1);
+INSERT INTO Pending_Post (Provider_ID, Status) VALUES(1, 0);
+INSERT INTO Pending_Post (Provider_ID, Status) VALUES(3, 1);
 
 INSERT INTO  Available_Services (Organization_ID, Hours_Available, Volunteers_Needed, Description, Name_Of_Service, Phone_Num) VALUES(1, 10, 5, 'Students needed to tutor first graders', 'Tutoring at Grace Elementary', '(347)390-0851');
 INSERT INTO  Available_Services (Organization_ID, Hours_Available, Volunteers_Needed, Description, Name_Of_Service, Phone_Num) VALUES(2, 5, 10, 'Community members needed to help with beach cleaning', 'Beach cleaning day', '(714)361-2381');
 
-INSERT INTO Current_Volunteers (Volunteer_ID, Available_Service_ID) VALUES (2, '8');
-INSERT INTO Current_Volunteers (Volunteer_ID, Available_Service_ID) VALUES (3, '10');
+INSERT INTO Current_Volunteers (Volunteer_ID, Available_Service_ID, Hours) VALUES (2, 1, 2.5);
+INSERT INTO Current_Volunteers (Volunteer_ID, Available_Service_ID, Hours) VALUES (3, 1, 2.0);

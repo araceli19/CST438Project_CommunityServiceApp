@@ -58,7 +58,7 @@ session_start();
        <meta name="google-signin-client_id" content="23817671136-knscbm6p1l4aj046g7dun6hva9ovg1v2.apps.googleusercontent.com">
        <meta charset="utf-8">
        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-       
+
        <script src="https://apis.google.com/js/platform.js" async defer></script>
        <title> Community Service Finder</title>
         <link rel="stylesheet" type="text/css" href="home.css">
@@ -84,7 +84,7 @@ session_start();
          </header>
          <nav>
          <a href= "login.php" id="currentPage">Home</a>
-         <a href= "testing.php">Services</a>
+         <a href= "search.php">Services</a>
          <a href= "volunteer_profile.html">My Profile</a>
          <a href= "contactUs.html">Contact Us</a>
 
@@ -187,7 +187,7 @@ session_start();
 	<div id="status"></div>
 	<button onclick="getInfo()">Get Info</button>
 	<button onclick="login()" id="login">Login</button>
-	
+
         <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
         <br/><br/><br/><br/><br/><br/><br/>
         <br/><br/><br/><br/><br/><br/><br/>

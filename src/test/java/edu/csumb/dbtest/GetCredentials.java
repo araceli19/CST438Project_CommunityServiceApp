@@ -3,8 +3,7 @@ package edu.csumb.dbtest;
 import org.junit.*;
 import java.sql.*;
 import java.io.IOException;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.*;
+
 
 
 

@@ -1,17 +1,19 @@
 <?php
 
-//this file is called for conneciton to database
 include('include/database.php');
-$dbConnection = getDatabaseConnection();
+$dbConnection = getDatabaseConnection(); //use database connection from the database file
 
-function getServices(){
-  global $dbConnection; //use global variable to call it anywhere in function
+function getVolunteers(){
+  //funcion that connects to database
+  global $dbConnection;
 
-    $sql = "SELECT * FROM Available_Services";
-    $statement = $dbConnection->prepare($sql);
-    $statement->execute();
-    $records = $statement->fetchAll(PDO::FETCH_ASSOC);
-  return $records;
+  $sql = "SELECT * FROM Volunteer";
+
+  $statement = $dbConnection->prepare($sql);
+  $statement->execute();
+  $records = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+ return $records;
 }
 
  ?>
@@ -24,37 +26,34 @@ function getServices(){
 </head>
 <body>
 <form name="search" method="post">
-Search: <input type="text" name="search" placeholder="Services"/>
+Search: <input type="text" name="search" placeholder="Users"/>
 <input type="submit" name="searchForm" value="Search" />
 </form>
 
   <?php
+
   if(isset($_POST['searchForm'])){
-    //if statement checks if user made any calls to search
-      $services= getServices();
+    //if statement checks if the user called for a search, then searches for the data
+      $volunteer = getVolunteers();
         echo "Search found :<br/>";
         echo "<table style=\"font-family:arial;color:#333333;\">";
                 echo "<tr><td style=\"border-style:solid;border-width:1px;border-color:#98bf21;
                 background:#98bf21;\">Name</td><td style=\"border-style:solid;border-width:1px;
                 border-color:#98bf21;background:#98bf21;\">DOB</td><td style=\"border-style:solid;
                 border-width:1px;border-color:#98bf21;background:#98bf21;\">School</td></tr>";
-                //adata is displayed in table format
-          foreach($services as $service){
+
+          foreach($volunteer as $vol){
             echo "<tr><td style=\"border-style:solid;border-width:1px;border-color:#98bf21;\">";
-                    echo $service['Name_Of_Service'];
+                    echo $vol['Name'];
             echo "</td><td style=\"border-style:solid;border-width:1px;border-color:#98bf21;\">";
-                    echo $service['Description'];
+                    echo $vol['DOB'];
             echo "</td><td style=\"border-style:solid;border-width:1px;border-color:#98bf21;\">";
-                    echo $service['Hours_Available'];
-            echo "</td><td style=\"border-style:solid;border-width:1px;border-color:#98bf21;\">";
-                    echo $service['Volunteers_Needed'];
-            echo "</td><td style=\"border-style:solid;border-width:1px;border-color:#98bf21;\">";
-                    echo $service['Phone_Num'];
+                    echo $vol['School'];
             echo "</td></tr>";
           }
           echo "</table>";
 
-  }
+      }
 
 
    ?>

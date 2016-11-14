@@ -16,6 +16,39 @@ function getVolunteers(){
  return $records;
 }
 
+
+
+/*
+  Refactor Solution 1 & 2: Remove Middle Man & Extract Method
+
+*/
+function createSearchTable($parameter)
+{
+  echo "Search found :<br/>";
+        echo "<table style=\"font-family:arial;color:#333333;\">";
+                echo "<tr><td style=\"border-style:solid;border-width:1px;border-color:#98bf21;
+                background:#98bf21;\">Name</td><td style=\"border-style:solid;border-width:1px;
+                border-color:#98bf21;background:#98bf21;\">DOB</td><td style=\"border-style:solid;
+                border-width:1px;border-color:#98bf21;background:#98bf21;\">School</td></tr>";
+
+
+          foreach($parameter as $vol){
+            echo "<tr><td style=\"border-style:solid;border-width:1px;border-color:#98bf21;\">";
+                    echo $vol['Name'];
+            echo "</td><td style=\"border-style:solid;border-width:1px;border-color:#98bf21;\">";
+                    echo $vol['DOB'];
+            echo "</td><td style=\"border-style:solid;border-width:1px;border-color:#98bf21;\">";
+                    echo $vol['School'];
+            echo "</td></tr>";
+          }
+
+          echo "</table>";
+
+    return True;
+}
+
+
+
  ?>
 <html>
 <head>
@@ -32,17 +65,21 @@ Search: <input type="text" name="search" placeholder="Users"/>
 
   <?php
 
+
+
   if(isset($_POST['searchForm'])){
     //if statement checks if the user called for a search, then searches for the data
       $volunteer = getVolunteers();
-        echo "Search found :<br/>";
+/* Code Smells: Temporary Field, Middle Man, and Dispensables       
+       echo "Search found :<br/>";
         echo "<table style=\"font-family:arial;color:#333333;\">";
                 echo "<tr><td style=\"border-style:solid;border-width:1px;border-color:#98bf21;
                 background:#98bf21;\">Name</td><td style=\"border-style:solid;border-width:1px;
                 border-color:#98bf21;background:#98bf21;\">DOB</td><td style=\"border-style:solid;
                 border-width:1px;border-color:#98bf21;background:#98bf21;\">School</td></tr>";
 
-          foreach($volunteer as $vol){
+
+          foreach($parameter as $vol){
             echo "<tr><td style=\"border-style:solid;border-width:1px;border-color:#98bf21;\">";
                     echo $vol['Name'];
             echo "</td><td style=\"border-style:solid;border-width:1px;border-color:#98bf21;\">";
@@ -51,8 +88,13 @@ Search: <input type="text" name="search" placeholder="Users"/>
                     echo $vol['School'];
             echo "</td></tr>";
           }
-          echo "</table>";
 
+          echo "</table>"; 
+*/  
+
+ // Refractor Solution 3: Inline Method
+ // Refactor Soultion 4: Introduce Parameter Object
+        createSearchTable($volunteer);        
       }
 
 

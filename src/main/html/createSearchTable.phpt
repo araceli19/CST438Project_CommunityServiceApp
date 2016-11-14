@@ -1,3 +1,5 @@
+
+
 //Test case for refactors 1 and 2
 --TEST--
 createSearchTable($parameter) function - for value of needed object
@@ -7,6 +9,7 @@ include volunteerSearch.php;
 $para = getVolunteers();
 createSearchTable($para);
 if($vol['School']!=NULL) die ($vol['School'])
+?>
 --EXCPECT--
 $vol['School']
 
@@ -19,6 +22,7 @@ createSearchTable($parameter) function - make sure line is called
 <?php
 include volunteerSearch.php;
 createSearchTable($para);
+?>
 --EXPECT--
 True
 
@@ -33,5 +37,6 @@ include volunteerSearch.php;
 $para = getVolunteers();
 createSearchTable($para);
 if($para != getVolunteers()) die(False);
+?>
 --EXPECT--
 True

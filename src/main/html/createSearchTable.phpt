@@ -1,4 +1,4 @@
-//Test case for refactors 1 & 2
+//Test case for refactors 1 and 2
 --TEST--
 createSearchTable($parameter) function - for value of needed object
 --FILE--

@@ -1,76 +1,36 @@
 <?php
+//Data Clumps
+//Extract Method in Php
+//Extract Class
+//removed extra lines by adding a new class
 session_start();
- $_SESSION['user'] = $user_id;
+include 'gmailSignIn.php';
 
-    if (id_token) {
- ?>
- <br><br>
+  $_SESSION['user'] = $id;
 
-    <script>
-      function signOut() {
-        var auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
-          console.log('User signed out.');
-        });
-    }
-    </script>
+  if($_SESSION['user'] != NULL)
+  echo $_SESSION['user'];
 
-  <a href="login.php" onclick="signOut();">Sign out</a>
+  ?>
 
- <?php
-
- } else {
-   ?>
-<br><br>
-
-   <script>
-     function onSignIn(googleUser) {
-       // Useful data for your client-side scripts:
-       var profile = googleUser.getBasicProfile();
-
-       console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-       console.log('Full Name: ' + profile.getName());
-       console.log('Given Name: ' + profile.getGivenName());
-       console.log('Family Name: ' + profile.getFamilyName());
-       console.log("Image URL: " + profile.getImageUrl());
-       console.log("Email: " + profile.getEmail());
-
-       // The ID token you need to pass to your backend:
-       var id_token = googleUser.getAuthResponse().id_token;
-       console.log("ID Token: " + id_token);
-
-       document.getElementById('name').innerText = "Signed in: " +
-           googleUser.getBasicProfile().getName();
-
-
-     };
-
-   </script>
-
-   <?php
- }
-?>
  <!DOCTYPE html>
 
  <html>
      <head>
-       <meta name="google-signin-scope" content="profile email">
-       <meta name="google-signin-client_id" content="23817671136-knscbm6p1l4aj046g7dun6hva9ovg1v2.apps.googleusercontent.com">
-       <meta charset="utf-8">
-       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-       <script src="https://apis.google.com/js/platform.js" async defer></script>
-       <title> Community Service Finder</title>
-        <link rel="stylesheet" type="text/css" href="home.css">
+           <meta name="google-signin-scope" content="profile email">
+           <meta name="google-signin-client_id" content="23817671136-knscbm6p1l4aj046g7dun6hva9ovg1v2.apps.googleusercontent.com">
+           <meta charset="utf-8">
+           <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+           <script src="https://apis.google.com/js/platform.js" async defer></script>
+           <title> Community Service Finder</title>
+            <link rel="stylesheet" type="text/css" href="home.css">
      </head>
-
-     <form>
-         <div class="login">
-           <div id="name" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-
-      </form>
-
-
 
 
      <body>
@@ -79,9 +39,19 @@ session_start();
          <h1> Community Service Finder </h1>
          </div>
 
-
-
          </header>
+
+         <?php $id = $_GET["name"]; ?>
+
+                  <div  id="<?php echo $id?>" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" ></div>
+                  <br>
+                  <a href="login.php" class="btn btn-default btn-sm" onclick="signOut();">
+                            <span class="glyphicon glyphicon-log-out"></span> Log out
+                  </a>
+
+                  <div id= "name" data-onsuccess="onSignIn"></div>
+                  <br> <br><br>
+
          <nav>
          <a href= "login.php" id="currentPage">Home</a>
          <a href= "search.php">Services</a>

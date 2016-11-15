@@ -1,5 +1,5 @@
 nav a{
-  
+
   padding:20px;
   padding-bottom:4px;
   /*color : green;*/
@@ -7,19 +7,19 @@ nav a{
   /*background-color: #8FAAB3;*/
  /* border-top-left-radius:70px;
   /*border-top-right-radius:10px;*/
-  
+
 }
 nav a:hover, #currentPage{ /*pseudo class*/
   background-color: #81B14F;
   font-size: 2em;
   transition: .2s;
    text-align: center;
-  
+
 }
 body,main, nav, footer{
   /*width: 960px;*/
   /*margin: 0 auto;*/ /* This aligns the section in the center */
-  
+
 }
 
 body{
@@ -27,9 +27,9 @@ body{
   /*background-color: Cyan;*/
   /*background: #C4BD8B; */
     text-align: center;
-    background: url(park.jpg) no-repeat center center fixed; 
-   
-    
+    background: url(park.jpg) no-repeat center center fixed;
+
+
 
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -48,7 +48,7 @@ img{
     border-bottom-right-radius: 175px;
     padding:20px;
     padding-bottom:4px;
-  
+
 }
 
 
@@ -72,7 +72,7 @@ td, th, tr {
 }
 
 .tables{
-   margin: 1cm 8cm; 
+   margin: 1cm 8cm;
 }
 
 .button {
@@ -94,11 +94,11 @@ td, th, tr {
     color: white;
     /*top, right, bottom, left */
     padding: 0px 25px 0px 25px;
-  
+
     text-align: center;
     text-decoration: none;
     display: inline-block;
-   
+
     font-size: 85px;
     margin: 2px 2px;
     cursor: pointer;
@@ -120,8 +120,8 @@ td, th, tr {
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    
-    
+
+
 }
 
 /* Modal Content */
@@ -136,7 +136,7 @@ td, th, tr {
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
     animation-duration: 0.4s;
-     
+
 }
 
 /* Add Animation */
@@ -156,7 +156,7 @@ td, th, tr {
     float: right;
     font-size: 28px;
     font-weight: bold;
-     
+
 }
 
 .close:hover,
@@ -164,25 +164,98 @@ td, th, tr {
     color: #000;
     text-decoration: none;
     cursor: pointer;
-   
+
 }
 
 .modal-header {
     padding: 2px 16px;
     background-color: #5cb85c;
     color: white;
- 
+
 }
 
 .modal-body {
     padding: 2px 16px;
     background-color: white;
-  
+
 }
 
 .modal-footer {
     padding: 2px 16px;
     background-color: #5cb85c;
     color: white;
-   
+
+}
+body {
+  font-family: Arial,sans-serif;
+  margin: auto;
+}
+
+.box {
+  border: .5em solid #E3E9FF;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: center;
+  -moz-box-orient: vertical;
+  -moz-box-align: center;
+  display: block;
+  box-orient: vertical;
+  box-align: center;
+  width: 750px;
+  height: auto;
+  margin: auto;
+  padding: 10px;
+  word-wrap: break-word;
+  text-overflow: ellipsis;
+}
+
+.me {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  width: 700px;
+}
+
+.activities {
+  -webkit-box-flex: 2;
+  -moz-box-flex: 2;
+  box-flex: 2;
+  width:100%;
+}
+
+.activity {
+  margin: 10px;
+}
+
+header {
+  color:#000;
+  padding:2px 5px;
+  font-size:100%;
+  width: 400px;
+  margin: auto;
+  text-align: center
+}
+
+header h1.logo {
+  margin:6px 0;
+  padding:0;
+  cursor:pointer;
+  font-size:24px;
+  line-height:20px;
+}
+
+.login {
+  font-size: 200%;
+  display: block;
+  margin: auto;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+  color: #2779AA;
+  line-height: normal;
+}
+
+.logout {
+  font-weight: normal;
+  padding-top: -5px;
+  margin-top: 0px;
 }

@@ -1,8 +1,4 @@
 <?php
-//Data Clumps
-//Extract Method in Php
-//Extract Class
-//removed extra lines by adding a new class
 session_start();
 include 'gmailSignIn.php';
 
@@ -21,13 +17,8 @@ include 'gmailSignIn.php';
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+          <script src="https://apis.google.com/js/platform.js" async defer></script>
 
-           <meta name="google-signin-scope" content="profile email">
-           <meta name="google-signin-client_id" content="23817671136-knscbm6p1l4aj046g7dun6hva9ovg1v2.apps.googleusercontent.com">
-           <meta charset="utf-8">
-           <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-           <script src="https://apis.google.com/js/platform.js" async defer></script>
            <title> Community Service Finder</title>
             <link rel="stylesheet" type="text/css" href="home.css">
      </head>
@@ -42,15 +33,13 @@ include 'gmailSignIn.php';
          </header>
 
          <?php $id = $_GET["name"]; ?>
-
-                  <div  id="<?php echo $id?>" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" ></div>
-                  <br>
                   <a href="login.php" class="btn btn-default btn-sm" onclick="signOut();">
-                            <span class="glyphicon glyphicon-log-out"></span> Log out
-                  </a>
-
+                   <span class="glyphicon glyphicon-log-out"></span> Log out</a>
+                 <br>
+                  <div  id="<?php echo $id?>" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" ></div>
                   <div id= "name" data-onsuccess="onSignIn"></div>
-                  <br> <br><br>
+                  <br><br><br>
+
 
          <nav>
          <a href= "login.php" id="currentPage">Home</a>

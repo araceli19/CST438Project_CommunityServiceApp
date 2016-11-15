@@ -28,7 +28,7 @@ database:
     - bash <(curl -s https://codecov.io/bash)
 test:
   override:
-    - mvn verify
+    - mvn failsafe:integration-test
   post:
     - mkdir -v -p $CIRCLE_TEST_REPORTS/reports/
     - cp -v ./*/*-reports/*.xml $CIRCLE_TEST_REPORTS/reports/

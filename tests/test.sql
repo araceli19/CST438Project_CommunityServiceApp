@@ -5,7 +5,17 @@ DROP TABLE IF EXISTS Volunteer;
 DROP TABLE IF EXISTS Current_Volunteers;
 DROP TABLE IF EXISTS Volunteer_Organization;
 DROP TABLE IF EXISTS Website_Operator;
+DROP TABLE IF EXISTS google_users;
 
+
+CREATE TABLE IF NOT EXISTS `google_users` (
+  `google_id` decimal(21,0) NOT NULL,
+  `google_name` varchar(100) NOT NULL,
+  `google_email` varchar(100) NOT NULL,
+  `google_link` varchar(100) NOT NULL,
+  `google_picture_link` varchar(200) NOT NULL,
+  PRIMARY KEY (`google_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 CREATE TABLE Website_Operator(
 	ID INT PRIMARY KEY AUTO_INCREMENT,

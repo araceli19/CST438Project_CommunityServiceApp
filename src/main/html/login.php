@@ -1,52 +1,55 @@
 <?php
-session_start();
-include 'gmailSignIn.php';
+  session_start(); //session start
+  include_once('gmailDB.php');
 
-  $_SESSION['user'] = $id;
+  echo '<div style="margin:20px">';
+  if (isset($authUrl)){
+    	echo '<div align="left">';
+    	echo '<a class="login" href="' . $authUrl . '"><img src="images/gmail_btn.png" /></a>';
+      echo '</div>'; }
+  else {
+  	$user = $service->userinfo->get(); //get user info
+  	$mysqli = new mysqli($host_name, $db_username, $db_password, $db_name); //connect db
+      if ($mysqli->connect_error) {
+          die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
+      }
+  	    $result = $mysqli->query("SELECT COUNT(google_id) as usercount FROM google_users WHERE google_id=$user->id");
+  	    $user_count = $result->fetch_object()->usercount; //will return 0 if user doesn't exist
 
-  if($_SESSION['user'] != NULL)
-  echo $_SESSION['user'];
+  	if($user_count) //if user already exist change greeting text to "Welcome Back"
+      {
+          $message = 'Welcome back '.$user->name.'!';
+          echo $message . "<br>" . "<br>";
+          echo '<a href="'.$redirect_uri.'?logout=1" class="btn btn-info btn-sm">
+            <span class="glyphicon glyphicon-log-out"></span> Log out </a>';}
+  	else {//else greeting text "Thanks for registering"
+	    $statement = $mysqli->prepare("INSERT INTO google_users (google_id, google_name, google_email, google_link, google_picture_link) VALUES (?,?,?,?,?)");
+  		$statement->bind_param('issss', $user->id,  $user->name, $user->email, $user->link, $user->picture);
+  		$statement->execute();
+        $message = 'Hi '.$user->name.', Thanks for Registering!';
+        echo $message . "<br>"."<br>";
+        echo '<a href="'.$redirect_uri.'?logout=1" class="btn btn-info btn-sm">
+          <span class="glyphicon glyphicon-log-out"></span> Log out </a>';}
+}
 
-  ?>
-
- <!DOCTYPE html>
+?>
 
  <html>
      <head>
-       <meta name="viewport" content="width=device-width, initial-scale=1">
-          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-          <script src="https://apis.google.com/js/platform.js" async defer></script>
-
-           <title> Community Service Finder</title>
             <link rel="stylesheet" type="text/css" href="home.css">
      </head>
 
-
      <body>
          <header>
-         <div id = "header">
-         <h1> Community Service Finder </h1>
-         </div>
-
+           <div id = "header">
+              <h1> Community Service Finder </h1>
+            </div>
          </header>
-
-         <?php $id = $_GET["name"]; ?>
-                  <a href="login.php" class="btn btn-default btn-sm" onclick="signOut();">
-                   <span class="glyphicon glyphicon-log-out"></span> Log out</a>
-                 <br>
-                  <div  id="<?php echo $id?>" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" ></div>
-                  <div id= "name" data-onsuccess="onSignIn"></div>
-                  <br><br><br>
-
-
          <nav>
-         <a href= "login.php" id="currentPage">Home</a>
-         <a href= "search.php">Services</a>
-         <a href= "volunteer_profile.html">My Profile</a>
-         <a href= "contactUs.html">Contact Us</a>
-
+           <a href= "login.php" id="currentPage">Home</a>
+           <a href= "search.php">Services</a>
+           <a href= "volunteer_profile.html">My Profile</a>
+           <a href= "contactUs.html">Contact Us</a>
          </nav>
 
          <div class="intro" style="background-color:black;color:white;padding:20px;">
@@ -63,37 +66,21 @@ include 'gmailSignIn.php';
                 As a student, you'll be able to:
 
                     <ul class="list">
-                        <li>
-                            search for community service opportunites
-                        </li>
-                        <li>
-                            keep track of your completed hours
-                        </li>
-                        <li>
-                            manage your own volunteer profile
-                        </li>
+                        <li> search for community service opportunites </li>
+                        <li>  keep track of your completed hours  </li>
+                        <li>manage your own volunteer profile</li>
                     </ul>
-
 
                  As a community service provider, you'll be able to:
                      <ul class="list">
-                         <li>
-                             post your volunteer opportunities
-                         </li>
-                         <li>
-                             review student volunteers
-                         </li>
-                         <li>
-                             keep track of previous volunteers
-                         </li>
+                         <li> post your volunteer opportunities </li>
+                         <li> review student volunteers </li>
+                         <li> keep track of previous volunteers </li>
                      </ul>
              </div>
-
          </div>
 
          <br/><br/><br/>
-
-      </div>
       <script>
 
 		// initialize and setup facebook js sdk
@@ -163,4 +150,3 @@ include 'gmailSignIn.php';
 	<button onclick="login()" id="login">Login</button>
 </body>
 </html>
-<?php

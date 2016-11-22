@@ -1,56 +1,64 @@
 <?php
   session_start(); //session start
   include_once('gmailDB.php');
-
-  echo '<div style="margin:20px">';
-  if (isset($authUrl)){
-    	echo '<div align="left">';
-    	echo '<a class="login" href="' . $authUrl . '"><img src="images/gmail_btn.png" /></a>';
-      echo '</div>'; }
-  else {
-  	$user = $service->userinfo->get(); //get user info
-  	$mysqli = new mysqli($host_name, $db_username, $db_password, $db_name); //connect db
-      if ($mysqli->connect_error) {
-          die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
-      }
-  	    $result = $mysqli->query("SELECT COUNT(google_id) as usercount FROM google_users WHERE google_id=$user->id");
-  	    $user_count = $result->fetch_object()->usercount; //will return 0 if user doesn't exist
-
-  	if($user_count) //if user already exist change greeting text to "Welcome Back"
-      {
-          $message = 'Welcome back '.$user->name.'!';
-          echo $message . "<br>" . "<br>";
-          echo '<a href="'.$redirect_uri.'?logout=1" class="btn btn-info btn-sm">
-            <span class="glyphicon glyphicon-log-out"></span> Log out </a>';}
-  	else {//else greeting text "Thanks for registering"
-	    $statement = $mysqli->prepare("INSERT INTO google_users (google_id, google_name, google_email, google_link, google_picture_link) VALUES (?,?,?,?,?)");
-  		$statement->bind_param('issss', $user->id,  $user->name, $user->email, $user->link, $user->picture);
-  		$statement->execute();
-        $message = 'Hi '.$user->name.', Thanks for Registering!';
-        echo $message . "<br>"."<br>";
-        echo '<a href="'.$redirect_uri.'?logout=1" class="btn btn-info btn-sm">
-          <span class="glyphicon glyphicon-log-out"></span> Log out </a>';}
-}
-
 ?>
 
  <html>
      <head>
             <link rel="stylesheet" type="text/css" href="home.css">
      </head>
-
      <body>
-         <header>
-           <div id = "header">
-              <h1> Community Service Finder </h1>
-            </div>
-         </header>
-         <nav>
-           <a href= "login.php" id="currentPage">Home</a>
-           <a href= "search.php">Services</a>
-           <a href= "volunteer_profile.html">My Profile</a>
-           <a href= "contactUs.html">Contact Us</a>
-         </nav>
+
+
+  <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#"><h3>Community Service Finder</h3></a>
+          </div>
+      <ul align="right" class="nav navbar-nav">
+          <li class="active"><a href="login.php" id="currentPage"><h5>Home</h5></a></li>
+          <li> <a href= "Search.php"><h5>Services</h5></a></li>
+          <li><a href= "volunteer_profile.html"><h5>My Profile</h5></a></li>
+          <li><a href= "contactUs.html"><h5>Contact Us</h5></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div id="left">
+      <?php
+               echo '<div style="margin:20px">';
+               if (isset($authUrl)){
+                   	echo '<div align="left">';
+                   	echo '<a class="login" href="' . $authUrl . '"><img src="images/gmail_btn.png" /></a>';
+               echo '</div>'; }
+
+               else {
+                 	$user = $service->userinfo->get(); //get user info
+                 	$mysqli = new mysqli($host_name, $db_username, $db_password, $db_name); //connect db
+                   if ($mysqli->connect_error) { die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error); }
+                 	    $result = $mysqli->query("SELECT COUNT(google_id) as usercount FROM google_users WHERE google_id=$user->id");
+                 	    $user_count = $result->fetch_object()->usercount; //will return 0 if user doesn't exist
+
+               	if($user_count) //if user already exist change greeting text to "Welcome Back"
+                   {
+                      $_SESSION['userId'] = $user->id;
+                       $message = 'Welcome back '.$user->name.'!';
+                       echo $message . "<br>" . "<br>";
+                       echo '<a href="'.$redirect_uri.'?logout=1" class="btn btn-info btn-sm">
+                         <span class="glyphicon glyphicon-log-out"></span> Log out </a>';}
+               	else {//else greeting text "Thanks for registering"
+                  $_SESSION['userId'] = $user->id;
+               	    $statement = $mysqli->prepare("INSERT INTO google_users (google_id, google_name, google_email, google_link, google_picture_link) VALUES (?,?,?,?,?)");
+                 		$statement->bind_param('issss', $user->id,  $user->name, $user->email, $user->link, $user->picture);
+                 		$statement->execute();
+                       $message = 'Hi '.$user->name.', Thanks for Registering!';
+                       echo $message . "<br>"."<br>";
+                       echo '<a href="'.$redirect_uri.'?logout=1" class="btn btn-info btn-sm">
+                         <span class="glyphicon glyphicon-log-out"></span> Log out </a>';}
+                      }
+                  echo '</div>';
+            ?>
+      </div>
 
          <div class="intro" style="background-color:black;color:white;padding:20px;">
              <h2><b>Welcome to the Community Service Finder!</b></h2>

@@ -1,8 +1,13 @@
 <?php
-
+session_start(); //session start
 //this file is called for conneciton to database
 include('include/database.php');
+include('gmailDB.php');
+$_SESSION['getId'] = $_POST['getId'];
+
+
 $dbConnection = getDatabaseConnection();
+
 
 function getServices(){
   global $dbConnection; //use global variable to call it anywhere in function
@@ -18,28 +23,55 @@ function getServices(){
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="home.css">
-  <a href= "login.php">Home</a>
-
 <title> Community Service Finder </title>
 </head>
 <body>
-<form name="search" method="post">
-Search: <input type="text" name="search" placeholder="Services"/>
-<input type="submit" name="searchForm" value="Search" />
-</form>
 
-  <?php
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#"><h3>Community Service Finder</h3></a>
+            </div>
+        <ul align="right" class="nav navbar-nav">
+            <li ><a href="login.php" ><h5>Home</h5></a></li>
+            <li class="active"> <a href= "Search.php" id="currentPage"><h5>Services</h5></a></li>
+            <li><a href= "volunteer_profile.html"><h5>My Profile</h5></a></li>
+            <li><a href= "contactUs.html"><h5>Contact Us</h5></a></li>
+        </ul>
+      </div>
+    </nav>
+
+
+    <form name="search" method="post">
+      Search: <input type="text" name="search" placeholder="All Available"/>
+      <input type="submit" name="searchForm" value="Search" />
+    </form>
+
+      <?php
+
   if(isset($_POST['searchForm'])){
     //if statement checks if user made any calls to search
       $services= getServices();
         echo "Search found :<br/>";
         echo "<table style=\"font-family:arial;color:#333333;\">";
                 echo "<tr><td style=\"border-style:solid;border-width:1px;border-color:#98bf21;
-                background:#98bf21;\">Name</td><td style=\"border-style:solid;border-width:1px;
-                border-color:#98bf21;background:#98bf21;\">DOB</td><td style=\"border-style:solid;
-                border-width:1px;border-color:#98bf21;background:#98bf21;\">School</td></tr>";
+                background:#98bf21;\">Name of Serivice
+                </td><td style=\"border-style:solid;border-width:1px;
+                border-color:#98bf21;background:#98bf21;\">Description
+                </td><td style=\"border-style:solid;
+                border-width:1px;border-color:#98bf21;background:#98bf21;\">Hours Available
+                </td><td style=\"border-style:solid;border-width:1px;
+                border-color:#98bf21;background:#98bf21;\">Volunteers Needed
+                </td><td style=\"border-style:solid;border-width:1px;
+                border-color:#98bf21;background:#98bf21;\">Phone Number
+                </td><td style=\"border-style:solid;border-width:1px;
+                border-color:#98bf21;background:#98bf21;\">Sign Up
+                </td></tr>";
                 //adata is displayed in table format
+
+
           foreach($services as $service){
+
             echo "<tr><td style=\"border-style:solid;border-width:1px;border-color:#98bf21;\">";
                     echo $service['Name_Of_Service'];
             echo "</td><td style=\"border-style:solid;border-width:1px;border-color:#98bf21;\">";
@@ -50,12 +82,27 @@ Search: <input type="text" name="search" placeholder="Services"/>
                     echo $service['Volunteers_Needed'];
             echo "</td><td style=\"border-style:solid;border-width:1px;border-color:#98bf21;\">";
                     echo $service['Phone_Num'];
+
+                    if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
+
+
+                      echo "</td><td style=\"border-style:solid;border-width:1px;border-color:#98bf21;\">";
+
+                      echo  '<form action="volunteerRegister.php" method="post">';
+
+                      echo '<input  type="radio"  name="getId" onclick="javascript: submit()" value="', $service['ID'],'">';
+
+
+                      echo"</form>";
+
+                    }
+
             echo "</td></tr>";
           }
+
           echo "</table>";
 
   }
-
 
    ?>
 

@@ -70,7 +70,7 @@ Search: <input type="text" name="search" placeholder="Users"/>
   if(isset($_POST['searchForm'])){
     //if statement checks if the user called for a search, then searches for the data
       $volunteer = getVolunteers();
-/* Code Smells: Temporary Field, Middle Man, and Dispensables       
+/* Code Smells: Temporary Field, Middle Man, and Dispensables
        echo "Search found :<br/>";
         echo "<table style=\"font-family:arial;color:#333333;\">";
                 echo "<tr><td style=\"border-style:solid;border-width:1px;border-color:#98bf21;
@@ -89,12 +89,12 @@ Search: <input type="text" name="search" placeholder="Users"/>
             echo "</td></tr>";
           }
 
-          echo "</table>"; 
-*/  
+          echo "</table>";
+*/
 
  // Refractor Solution 3: Inline Method
  // Refactor Soultion 4: Introduce Parameter Object
-        createSearchTable($volunteer);        
+        createSearchTable($volunteer);
       }
 
 

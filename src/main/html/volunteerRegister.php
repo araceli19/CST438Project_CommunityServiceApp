@@ -1,62 +1,143 @@
 <?php
-
 session_start();
 include('include/database.php');
+include('setVolunteerRegistration.php');
 
-
-//echo $_POST['getId'];
 $id = $_POST['getId'];
-//echo $id;
-
 $googleId = $_SESSION['userId'];
+$orgId = $_SESSION['orgId'];
 
-
-  function getGoogleUser(){
-    $dbConnection = getDatabaseConnection();
-    //global $dbConnection; //use global variable to call it anywhere in function
-    $sql = "SELECT * FROM google_users WHERE google_id = :google_id";
-    $namedParameters = array(":google_id"=>$_SESSION['userId']);
-    $statement =  $dbConnection->prepare($sql);
-    $statement->execute($namedParameters);
-
-    return $statement->fetch(PDO::FETCH_ASSOC);
-
-  }
-
+//echo $orgId . " ";
+//echo $id. " ";
+//echo " ", $googleId;
 
  ?>
 <html>
-    <head>
-      <style>
-        .message {color: #FF0000;font-weight: bold;text-align: center;width: 100%;padding: 10;}
-        .demo-table {background:#FFDFDF;width: 100%;border-spacing: initial;margin: 20px 0px;word-break: break-word;table-layout: auto;line-height:1.8em;color:#333;}
-        .demo-table td {padding: 20px 15px 10px 15px;}
-        .demoInputBox {padding: 7px;border: #F0F0F0 1px solid;border-radius: 4px;}
-        .btnRegister {padding: 10px;background-color: #09F;border: 0;color: #FFF;cursor: pointer;}
-     </style>
-   </head>
+          <head>
+              <meta name="viewport" content="width=device-width, initial-scale=1">
+              <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+              <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+               <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+              <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+                  <title> Community Service Finder</title>
+                <link rel="stylesheet" type="text/css" href="registrationForm.css">
+         </head>
+         <body>
+            <?php
+                  $gUser= getGoogleUser();
+                    if($gUser){  $name =  $gUser['google_name'];  $email = $gUser['google_email']; }
+                    else{  $name =  ""; $email = ""; }
 
-     <?php   $gUser= getGoogleUser();
-        $name =  $gUser['google_name'];
-        $email = $gUser['google_email'];
-    ?>
+                  $getVolunteer = getVolunteerInfo();
+                    if($getVolunteer){ $nameV =  $getVolunteer['Name'];  $dob = $getVolunteer['DOB'];
+                                       $school =  $getVolunteer['School'];  $phoneNum = $getVolunteer['Phone_Num'];}
+                    else{  $nameV = "";  $dob = "";
+                           $school =  "";  $phoneNum = ""; }
+            ?>
 
-    <h4 align="center"> Volunteer Registration </h4>
-      <form align="center" name="frmRegistration" method="post" action="">
-        <table border="" width="500" align="center" class="demo-table">
-            <tr><td>Name</td>
-              <td><input type="text"  class="demoInputBox" name="firstName" value="<?php  echo $name; ?>"></td>
-            </tr>
+            <nav class="navbar navbar-inverse">
+              <div class="container-fluid">
+                    <div class="navbar-header">
+                      <a class="navbar-brand" href="#"><h3>Volunteer Registration</h3></a>
+                    </div>
+                    <ul align="right" class="nav navbar-nav">
+                      <li><a href="login.php" ><h5>Home</h5></a></li>
+                      <li class="active"><a href= "volunteerRegister.php" id="currentPage"><h5>Volunteer Registration</h5></a></li>
+                      <li> <a href= "Search.php"><h5>Services</h5></a></li>
+                      <li><a href= "volunteer_profile.html"><h5>My Profile</h5></a></li>
+                      <li><a href= "contactUs.html"><h5>Contact Us</h5></a></li>
+                    </ul>
+                </div>
+            </nav>
 
-            <tr><td>Email</td>
-              <td><input type="text" class="demoInputBox"  name="userEmail" value="<?php echo $email; ?>"></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td><input type="checkbox" name="terms"> I accept Terms and Conditions</td>
-           </tr>
-        </table>
-        <div><input type="submit" class="btnRegister" name="submit" value="Register"></div>
-      </form>
 
+              <form id="left" align="center" name="frmRegistration" method="post" action="" >
+                  <table border="1" width="500" align="center" class="demo-table">
+                    <tr> <td>Name</td>
+                          <td><input type="text" class="demoInputBox" name="firstName" value="<?php echo $name; ?>">
+                            <?php
+                                echo "<div  style=color:Red;>";
+                                echo "<br>";
+                                    if(!isset($_POST["firstName"]) && isset($_POST["submit"])) {
+                                        $message = "Name, Lastname must filled"; echo $message;
+                                      }
+                                echo "</div>";
+                              ?>  </td>
+                      </tr><tr> <td>Email</td>
+                            <td><input type="text"  class="demoInputBox" name="userEmail" value="<?php echo $email; ?>"/>
+                              <?php
+                                  echo "<div  style=color:Red;>";
+                                  echo "<br>";
+                                      if(!isset($_POST["userEmail"])&& isset($_POST["submit"])) {
+                                        $message = "Email must be filled in before summitting"; echo $message;
+                                      }
+                                  echo "</div>";
+                                ?></td>
+                    </tr> <tr>  <td>DOB</td>
+                         <td><input type="text" class="demoInputBox" name="DOB" value="<?php echo $dob; ?>"/>  <?php
+
+                                    echo "<div  style=color:Red;>";
+                                    echo "<br>";
+                                      if(empty($_POST["DOB"]) && isset($_POST["submit"])) {
+                                        $message = "Date of birth needed"; echo $message;
+                                      }
+                                    echo "</div>";
+                            ?></td>
+
+                      </tr><tr>  <td>School (if any)</td>
+                             <td><input type="text" class="demoInputBox"  name="school" value="<?php echo $school; ?>"/>
+
+                          </td>
+
+                        </tr><tr>  <td>Phone Number</td>
+                               <td><input type="text"  class="demoInputBox" name="phoneNum" value="<?php echo $phoneNum; ?>"/>
+                             <?php
+                                  echo "<div  style=color:Red;>";
+                                  echo "<br>";
+                                    if(empty($_POST["phoneNum"]) && isset($_POST["submit"])) {
+                                        $message = "Phone Number needed";  echo $message;
+                                    }
+                                  echo "</div>";
+                                ?>  </td>
+
+                        </tr><tr>
+                        <td></td>
+                            <td><input type="checkbox" name="terms"/> I accept Terms and Conditions
+                            <?php
+                                echo "<div  style=color:Red;>";
+                                echo "<br>";
+                                  if(!isset($_POST["terms"]) && isset($_POST["submit"])) {
+                                      $message = "Accept Terms and conditions before submit";  echo $message;
+                                    }
+                                echo "</div>";
+                              ?>  </td>
+
+                    </tr><tr> <td> Upload Your Resume</td>
+                        <td> <input type="file" name="fileToUpload" id="fileToUpload"/> </td>
+                    </tr>
+                    </table>
+                    <br>
+                      <div><input type="submit" class="btnRegister" name="submit" value="Register"/></div>
+              </form>
+             <?php
+               /* Validation to check if Terms and Conditions are accepted */
+             if(isset($_POST["terms"]) && isset($_POST["userEmail"]) && isset($_POST["submit"])){
+                if(isset($_POST['school']))  $school = $_POST["school"];
+                if(isset($_POST['DOB'])) $dob = $_POST['DOB'];
+                if(isset($_POST['phoneNum'])) $phoneNum = $_POST['phoneNum'];
+
+                  if(empty($getVolunteer))
+                    insertIntoVolunteer($googleId, $dob, $school, $phoneNum, $name);
+                volunteerFormSubmition($orgId, $googleId);
+
+                echo "<div>";
+                echo '<script type="text/javascript" class="alert alert-success">';
+                echo 'alert("You have registered successfully!");';
+                echo 'window.location.href = "login.php";';
+                echo '</script>';
+              //  $success = "&nbsp&nbspYou have registered successfully!";  echo  $success;
+                unset($_POST);
+                echo "</div>";
+               }  ?>
+          </body>
 </html>

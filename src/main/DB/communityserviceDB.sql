@@ -50,9 +50,11 @@ CREATE TABLE Pending_Post(
 	FOREIGN KEY (Provider_ID) REFERENCES Volunteer_Organization (ID)
 )ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+
 CREATE TABLE Available_Services(
 ID INT(6) PRIMARY KEY NOT NULL AUTO_INCREMENT,
 Organization_ID INT(6),
+Category_ID smallint(6) NOT NULL,
 Hours_Available DOUBLE(10,2) NOT NULL,
 Volunteers_Needed INT(3) NOT NULL,
 Description VARCHAR(200) NOT NULL,

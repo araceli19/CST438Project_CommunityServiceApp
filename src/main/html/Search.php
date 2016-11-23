@@ -71,6 +71,7 @@ function getServices(){
 
 
           foreach($services as $service){
+              $_SESSION['orgId'] = $service['Organization_ID'];
 
             echo "<tr><td style=\"border-style:solid;border-width:1px;border-color:#98bf21;\">";
                     echo $service['Name_Of_Service'];
@@ -92,10 +93,10 @@ function getServices(){
 
                       echo '<input  type="radio"  name="getId" onclick="javascript: submit()" value="', $service['ID'],'">';
 
-
                       echo"</form>";
 
                     }
+
 
             echo "</td></tr>";
           }

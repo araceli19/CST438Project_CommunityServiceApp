@@ -1,11 +1,13 @@
 <?php
 //this file connects to database
     function getDatabaseConnection(){
-    $host = "127.0.0.1";
-    //$host= "localhost";
+    $host= "sedatabases.clgz1qavgh08.us-west-2.rds.amazonaws.com:3306";
+    $username = "seclass";
+    $password = "sedb1234";
     $dbname = "Community_Service_Finder";
-    $username = "root";
-    $password = "123";
+    //$host = "127.0.0.1";
+    //$username = "root";
+    //$password = "123";
 
         //create new connection
         $dbConn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);

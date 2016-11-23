@@ -24,10 +24,16 @@
     </div>
   </nav>
 
+
   <div id="left">
+    <form action="" method="POST"
+  <input type="submit" name="withGmail" id="enter" value="Login as Volunteer" />
+
+
       <?php
+
                echo '<div style="margin:20px">';
-               if (isset($authUrl)){
+               if (isset($authUrl)) {
                    	echo '<div align="left">';
                    	echo '<a class="login" href="' . $authUrl . '"><img src="images/gmail_btn.png" /></a>';
                echo '</div>'; }

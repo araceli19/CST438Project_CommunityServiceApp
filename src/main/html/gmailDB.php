@@ -6,10 +6,14 @@ $client_secret = 'eNYtCnk3MVXfBYtnCYEepqQd';
 $redirect_uri = 'http://localhost:8080/login.php';
 
 //database
-$db_username = "root"; //Database Username
-$db_password = "123"; //Database Password
-$host_name = "127.0.0.1"; //Mysql Hostname
-$db_name = 'Community_Service_Finder'; //Database Name
+$host_name= "sedatabases.clgz1qavgh08.us-west-2.rds.amazonaws.com:3306";
+$db_username = "seclass";
+$db_password = "sedb1234";
+$db_name = "Community_Service_Finder";
+//$db_username = "root"; //Database Username
+//$db_password = "123"; //Database Password
+//$host_name = "127.0.0.1"; //Mysql Hostname
+//$db_name = 'Community_Service_Finder'; //Database Name
 
 if (isset($_GET['logout'])) {
   unset($_SESSION['access_token']);
@@ -37,11 +41,11 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 } else {
   $authUrl = $client->createAuthUrl();
 }
+
 if($client->isAccessTokenExpired()) {
-
     $authUrl = $client->createAuthUrl();
-    header('Location: ' . filter_var($authUrl, FILTER_SANITIZE_URL));
-
+    //unset code only if it gives you an expiration error
+    //header('Location: ' . filter_var($authUrl, FILTER_SANITIZE_URL));
 }
 
 

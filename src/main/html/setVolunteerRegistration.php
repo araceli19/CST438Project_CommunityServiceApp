@@ -32,7 +32,7 @@ function insertIntoVolunteer($id, $dob, $school, $phoneNum, $name){
         }
     else {
         $sql = "INSERT INTO Volunteer
-         (ID, Name, DOB,Phone_Num)
+         (ID, Name, DOB, Phone_Num)
          VALUES(:ID, :Name, :DOB, :Phone_Num)";
        }
 

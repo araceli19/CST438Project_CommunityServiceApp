@@ -94,7 +94,7 @@
              </div>
          </div>
 
-         <br/><br/><br/>
+         <br/> <br/> <br/>
       <script>
 
 		// initialize and setup facebook js sdk

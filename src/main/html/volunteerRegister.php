@@ -29,10 +29,11 @@ $orgId = $_SESSION['orgId'];
                     else{  $name =  ""; $email = ""; }
 
                   $getVolunteer = getVolunteerInfo();
-                    if($getVolunteer){ $nameV =  $getVolunteer['Name'];  $dob = $getVolunteer['DOB'];
-                                       $school =  $getVolunteer['School'];  $phoneNum = $getVolunteer['Phone_Num'];}
-                    else{  $nameV = "";  $dob = "";
-                           $school =  "";  $phoneNum = ""; }
+                    if($getVolunteer){ $nameV =  $getVolunteer['Name']; $dob = $getVolunteer['DOB']; $gender = $getVolunteer['Gender'];
+                                       $school = $getVolunteer['School']; $phoneNum = $getVolunteer['Phone_Num'];}
+                    else{  $nameV="";
+                           $school="";  $phoneNum="";
+                           $gender = ""; }
             ?>
 
             <nav class="navbar navbar-inverse">
@@ -73,17 +74,25 @@ $orgId = $_SESSION['orgId'];
                                       }
                                   echo "</div>";
                                 ?></td>
-                    </tr> <tr>  <td>DOB</td>
-                         <td><input type="text" class="demoInputBox" name="DOB" value="<?php echo $dob; ?>"/>  <?php
-
-                                    echo "<div  style=color:Red;>";
+                    </tr> <tr>  <td>DOB (YYYY-MM-DD)</td>
+                    <td><input type="text" class="demoInputBox" name="DOB" value="<?php echo $dob; ?>"/> <?php // month array
+                                  echo "<div  style=color:Red;>";
                                     echo "<br>";
                                       if(empty($_POST["DOB"]) && isset($_POST["submit"])) {
                                         $message = "Date of birth needed"; echo $message;
                                       }
                                     echo "</div>";
-                            ?></td>
+                      ?> </td>
+                    </td>
+                          </tr><tr>
+                            <td> Gender:</td><td> Male&nbsp;<input  class="demoInputBox"  type="radio" name="egender" value="Male">
+                               &nbsp;&nbsp;
+                              Female&nbsp;<input class="demoInputBox"  type="radio" name="egender" <?php { echo "checked"; }?> value="female"> 
 
+
+                            </td></tr>
+
+                          </td>
                       </tr><tr>  <td>School (if any)</td>
                              <td><input type="text" class="demoInputBox"  name="school" value="<?php echo $school; ?>"/>
 
@@ -91,16 +100,25 @@ $orgId = $_SESSION['orgId'];
 
                         </tr><tr>  <td>Phone Number</td>
                                <td><input type="text"  class="demoInputBox" name="phoneNum" value="<?php echo $phoneNum; ?>"/>
+
+
                              <?php
                                   echo "<div  style=color:Red;>";
                                   echo "<br>";
                                     if(empty($_POST["phoneNum"]) && isset($_POST["submit"])) {
                                         $message = "Phone Number needed";  echo $message;
                                     }
+
+
                                   echo "</div>";
-                                ?>  </td>
+
+                                ?>
+
+
+                               </td>
 
                         </tr><tr>
+
                         <td></td>
                             <td><input type="checkbox" name="terms"/> I accept Terms and Conditions
                             <?php
@@ -126,18 +144,40 @@ $orgId = $_SESSION['orgId'];
                 if(isset($_POST['DOB'])) $dob = $_POST['DOB'];
                 if(isset($_POST['phoneNum'])) $phoneNum = $_POST['phoneNum'];
 
-                  if(empty($getVolunteer))
-                    insertIntoVolunteer($googleId, $dob, $school, $phoneNum, $name);
-                volunteerFormSubmition($orgId, $googleId);
 
-                echo "<div>";
-                echo '<script type="text/javascript" class="alert alert-success">';
-                echo 'alert("You have registered successfully!");';
-                echo 'window.location.href = "login.php";';
-                echo '</script>';
+
+
+                  $pattern = "/^[0-9\_]{7,20}/";
+                    $pattern2 = "/^(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]-[0-9]{4})/";
+                  if (!preg_match($pattern,$phoneNum)){
+                    echo "<div  style=color:Red;>";
+                    echo "<br>";
+                       echo 'Your Phone number can only be numbers.';
+                      echo "</div>";
+                    }
+
+                    else if (!preg_match($pattern2,$dob))
+                    {
+                      echo "<div  style=color:Red;>";
+                      echo "<br>";
+                         echo 'DOB has the wrong format!.';
+                        echo "</div>";
+                    }
+                else{
+                    if(empty($getVolunteer))
+                      insertIntoVolunteer($googleId, $dob, $school, $phoneNum, $name);
+                      volunteerFormSubmition($orgId, $googleId);
+
+                      echo "<div>";
+                      echo '<script type="text/javascript" class="alert alert-success">';
+                      echo 'alert("You have registered successfully!");';
+                      echo 'window.location.href = "login.php";';
+                      echo '</script>';
               //  $success = "&nbsp&nbspYou have registered successfully!";  echo  $success;
-                unset($_POST);
-                echo "</div>";
-               }  ?>
+                    unset($_POST);
+                    echo "</div>";
+               }
+             }
+                ?>
           </body>
 </html>

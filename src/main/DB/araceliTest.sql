@@ -35,11 +35,12 @@ CREATE TABLE Website_Operator(
 CREATE TABLE Volunteer(
  ID decimal(21,0) NOT NULL,
  Name varchar(100) NOT NULL,
- DOB VARCHAR(10) NOT NULL,
+ DOB varchar(10),
+ Gender varchar(10),
  School VARCHAR(30),
  School_ID INT(6),
  Hours DOUBLE(10,2),
- Phone_Num VARCHAR (13) NOT NULL,
+ Phone_Num VARCHAR (13),
  FOREIGN KEY (ID) REFERENCES google_users (google_id)
 )ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -115,10 +116,10 @@ INSERT INTO Volunteer_Organization (Contact_name, Org_Name, Phone_Num, Email, Pa
 INSERT INTO Volunteer_Organization (Contact_name, Org_Name, Phone_Num, Email, Password) VALUES('Miriam London', 'Monterey Bay Aquarium', '(831)130-1744', 'MLondon@hotmail.com', '123Louisiana');
 INSERT INTO Volunteer_Organization (Contact_name, Org_Name, Phone_Num, Email, Password) VALUES('Mayra Coloma', 'Boys and Girls Club', '(431)567-1358', 'gabc@yahoo.com', 'pass123');
 
-INSERT INTO Volunteer (Name, DOB, School, School_ID, Hours, Phone_Num) VALUES('Cecilia Perez', '12-04-1998', 'Seaside High School', 27493, 0, '(563)593-5859');
-INSERT INTO Volunteer (Name, DOB, School, School_ID, Hours, Phone_Num) VALUES('Ozi Benini', '03-14-2003', 'Palma Middle School', 78420, 8.5, '(612)502-5256');
-INSERT INTO Volunteer (Name, DOB, Hours, Phone_Num) VALUES('Jess Noel', '07-28-1991', 10.2, '(562)384-1596');
-INSERT INTO Volunteer (Name, DOB, Hours, Phone_Num) VALUES('Irais Chino', '07-05-1990', 27.2, '(231)952-8521');
+INSERT INTO Volunteer (Name, DOB, School, School_ID, Hours, Phone_Num) VALUES('Cecilia Perez', '12-04-1998', 'Seaside High School', 27493, 0, '5635935859');
+INSERT INTO Volunteer (Name, DOB, School, School_ID, Hours, Phone_Num) VALUES('Ozi Benini', '03-14-2003', 'Palma Middle School', 78420, 8.5, '6125025256');
+INSERT INTO Volunteer (Name, DOB, Hours, Phone_Num) VALUES('Jess Noel', '07-28-1991', 10.2, '5623841596');
+INSERT INTO Volunteer (Name, DOB, Hours, Phone_Num) VALUES('Irais Chino', '07-05-1990', 27.2, '2319528521');
 
 
 INSERT INTO `Pending_Post` (`Hours_Available`, `Volunteers_Needed`, `Description`, `Name_Of_Service`, `Phone_Num`, `Category_ID`, `Organization_ID`, `Provider_ID`, `Status`) VALUES

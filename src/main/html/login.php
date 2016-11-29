@@ -2,13 +2,11 @@
   session_start(); //session start
   include_once('gmailDB.php');
 ?>
-
  <html>
      <head>
             <link rel="stylesheet" type="text/css" href="home.css">
      </head>
      <body>
-
 
   <nav class="navbar navbar-inverse">
       <div class="container-fluid">
@@ -31,17 +29,17 @@
 
 
       <?php
-
                echo '<div style="margin:20px">';
-               if (isset($authUrl)) {
-                   	echo '<div align="left">';
-                   	echo '<a class="login" href="' . $authUrl . '"><img src="images/gmail_btn.png" /></a>';
+                if (isset($authUrl)) {
+                   	  echo '<div align="left">';
+                   	  echo '<a class="login" href="' . $authUrl . '"><img src="images/gmail_btn.png" /></a>';
                echo '</div>'; }
 
                else {
                  	$user = $service->userinfo->get(); //get user info
+
                  	$mysqli = new mysqli($host_name, $db_username, $db_password, $db_name); //connect db
-                   if ($mysqli->connect_error) { die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error); }
+                  if ($mysqli->connect_error) { die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error); }
                  	    $result = $mysqli->query("SELECT COUNT(google_id) as usercount FROM google_users WHERE google_id=$user->id");
                  	    $user_count = $result->fetch_object()->usercount; //will return 0 if user doesn't exist
 
@@ -53,7 +51,7 @@
                        echo '<a href="'.$redirect_uri.'?logout=1" class="btn btn-info btn-sm">
                          <span class="glyphicon glyphicon-log-out"></span> Log out </a>';}
                	else {//else greeting text "Thanks for registering"
-                  $_SESSION['userId'] = $user->id;
+                    $_SESSION['userId'] = $user->id;
                	    $statement = $mysqli->prepare("INSERT INTO google_users (google_id, google_name, google_email, google_link, google_picture_link) VALUES (?,?,?,?,?)");
                  		$statement->bind_param('issss', $user->id,  $user->name, $user->email, $user->link, $user->picture);
                  		$statement->execute();

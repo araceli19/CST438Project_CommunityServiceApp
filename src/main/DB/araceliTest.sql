@@ -15,11 +15,11 @@ CREATE TABLE IF NOT EXISTS `Categories` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 CREATE TABLE IF NOT EXISTS `google_users` (
-  `google_id` decimal(21,0) NOT NULL,
+  `google_id` decimal(30,0) NOT NULL,
   `google_name` varchar(100) NOT NULL,
   `google_email` varchar(100) NOT NULL,
-  `google_link` varchar(100) NOT NULL,
-  `google_picture_link` varchar(200) NOT NULL,
+  `google_link` varchar(100),
+  `google_picture_link` varchar(200),
   PRIMARY KEY (`google_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -33,7 +33,7 @@ CREATE TABLE Website_Operator(
 
 
 CREATE TABLE Volunteer(
- ID decimal(21,0) NOT NULL,
+ ID decimal(30,0) NOT NULL,
  Name varchar(100) NOT NULL,
  DOB varchar(10),
  Gender varchar(10),
@@ -116,7 +116,7 @@ INSERT INTO Volunteer_Organization (Contact_name, Org_Name, Phone_Num, Email, Pa
 INSERT INTO Volunteer_Organization (Contact_name, Org_Name, Phone_Num, Email, Password) VALUES('Miriam London', 'Monterey Bay Aquarium', '(831)130-1744', 'MLondon@hotmail.com', '123Louisiana');
 INSERT INTO Volunteer_Organization (Contact_name, Org_Name, Phone_Num, Email, Password) VALUES('Mayra Coloma', 'Boys and Girls Club', '(431)567-1358', 'gabc@yahoo.com', 'pass123');
 
-INSERT INTO Volunteer (Name, DOB, School, School_ID, Hours, Phone_Num) VALUES('Cecilia Perez', '12-04-1998', 'Seaside High School', 27493, 0, '5635935859');
+INSERT INTO Volunteer (Name, DOB, Gender, School, School_ID, Hours, Phone_Num) VALUES('Cecilia Perez', '12-04-1998', 'Female', 'Seaside High School', 27493, 0, '5635935859');
 INSERT INTO Volunteer (Name, DOB, School, School_ID, Hours, Phone_Num) VALUES('Ozi Benini', '03-14-2003', 'Palma Middle School', 78420, 8.5, '6125025256');
 INSERT INTO Volunteer (Name, DOB, Hours, Phone_Num) VALUES('Jess Noel', '07-28-1991', 10.2, '5623841596');
 INSERT INTO Volunteer (Name, DOB, Hours, Phone_Num) VALUES('Irais Chino', '07-05-1990', 27.2, '2319528521');
@@ -127,8 +127,8 @@ INSERT INTO `Pending_Post` (`Hours_Available`, `Volunteers_Needed`, `Description
 (0, 0, '', '', '', 0, 0, 1, 0),
 (0, 0, '', '', '', 0, 0, 3, 1);
 
-INSERT INTO  Available_Services (Organization_ID, Category_ID, Hours_Available, Volunteers_Needed, Description, Name_Of_Service, Phone_Num) VALUES(1,0, 10, 5, 'Students needed to tutor first graders', 'Tutoring at Grace Elementary', '(347)390-0851');
-INSERT INTO  Available_Services (Organization_ID, Category_ID, Hours_Available, Volunteers_Needed, Description, Name_Of_Service, Phone_Num) VALUES(2,0, 5, 10, 'Community members needed to help with beach cleaning', 'Beach cleaning day', '(714)361-2381');
+INSERT INTO  Available_Services (Organization_ID, Category_ID, Hours_Available, Volunteers_Needed, Description, Name_Of_Service, Phone_Num) VALUES(1,2, 10, 5, 'Students needed to tutor first graders', 'Tutoring at Grace Elementary', '(347)390-0851');
+INSERT INTO  Available_Services (Organization_ID, Category_ID, Hours_Available, Volunteers_Needed, Description, Name_Of_Service, Phone_Num) VALUES(2,1, 5, 10, 'Community members needed to help with beach cleaning', 'Beach cleaning day', '(714)361-2381');
 
 INSERT INTO Current_Volunteers (Volunteer_ID, Available_Service_ID, Hours) VALUES (2, 1, 2.5);
 INSERT INTO Current_Volunteers (Volunteer_ID, Available_Service_ID, Hours) VALUES (3, 1, 2.0);

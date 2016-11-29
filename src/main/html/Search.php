@@ -5,9 +5,7 @@ include('include/database.php');
 include('gmailDB.php');
 $_SESSION['getId'] = $_POST['getId'];
 
-
 $dbConnection = getDatabaseConnection();
-
 
 function getServices(){
   global $dbConnection; //use global variable to call it anywhere in function
@@ -17,6 +15,42 @@ function getServices(){
     $statement->execute();
     $records = $statement->fetchAll(PDO::FETCH_ASSOC);
   return $records;
+}
+function getCategories(){
+  global $dbConnection; //use global variable to call it anywhere in function
+
+    $sql = "SELECT * FROM Categories";
+    $statement = $dbConnection->prepare($sql);
+    $statement->execute();
+    $records = $statement->fetchAll(PDO::FETCH_ASSOC);
+  return $records;
+}
+
+function getSearch(){
+  global $dbConnection;
+
+   $sql = "SELECT *
+           FROM Available_Services";
+
+   if(isset($_POST['search']))
+   {
+       $query = $_POST['search'];
+       $sql .= " WHERE Name_Of_Service
+                LIKE '%$query%'";
+   }
+
+   if(!empty($_POST['categories']) && $_POST['categories'] !== "All")
+   {
+       $catID = $_POST['categories'];
+       $sql .= " AND Category_ID = $catID";
+   }
+
+   $statement = $dbConnection->prepare($sql);
+   $statement->execute();
+   $records = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+   return $records;
+
 }
 
  ?>
@@ -44,14 +78,28 @@ function getServices(){
 
     <form name="search" method="post">
       Search: <input type="text" name="search" placeholder="All Available"/>
+      <?php
+      $categories = getCategories();
+      $select= '<select name="categories">';
+              $select.='<option value="All">ALL</option>';
+      foreach($categories as $cat){
+            $select.='<option value="'.$cat['Category_ID'].'">'.$cat['Category'].'</option>';
+        }
+
+      $select.='</select>';
+      echo $select;
+
+      ?>
       <input type="submit" name="searchForm" value="Search" />
+
     </form>
 
       <?php
 
+
   if(isset($_POST['searchForm'])){
     //if statement checks if user made any calls to search
-      $services= getServices();
+      $services= getSearch();
         echo "Search found :<br/>";
         echo "<table style=\"font-family:arial;color:#333333;\">";
                 echo "<tr><td style=\"border-style:solid;border-width:1px;border-color:#98bf21;
@@ -97,15 +145,14 @@ function getServices(){
 
                     }
 
-
             echo "</td></tr>";
           }
 
           echo "</table>";
-
   }
 
    ?>
+
 
 </body>
 </html>

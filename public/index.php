@@ -4,8 +4,8 @@
 ?>
 <?php
   include "tests/VolunteerTest.php";
-  $mon = new Monster();
-  echo "test: ".$mon->pop();
+  $test = new VolunteerTest();
+  echo "test: ".$test->pop();
  <html>
      <head>
             <link rel="stylesheet" type="text/css" href="html/home.css">

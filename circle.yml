@@ -4,26 +4,6 @@ machine:
 
   services:
     - mysql
-
-  hosts:
-    athliit.app: 127.0.0.1
-
-  environment:
-    APP_ENV: testing
-    APP_URL: 127.0.0.1
-    DB_HOST: 127.0.0.1
-    DB_URL: 127.0.0.1
-    DB_NAME: circle_test
-    DB_USER: ubuntu
-dependencies:
-  pre:
-    - rm /opt/circleci/php/$(phpenv global)/etc/conf.d/xdebug.ini
-    - composer update --prefer-stable --prefer-lowest --no-interaction
-database:
-  override:
-    - mysql -u ubuntu circle_test < tests/test.sql
-    - mkdir -p $CIRCLE_TEST_REPORTS/phpunit
-    - phpunit --log-junit $CIRCLE_TEST_REPORTS/phpunit/junit.xml tests
 test:
   override:
     - vendor/bin/phpunit ./tests --coverage-clover coverage.xml --whitelist ./public --log-junit $CIRCLE_TEST_REPORTS/tests.xml

@@ -6,7 +6,7 @@ machine:
     - mysql
 test:
   override:
-    - vendor/bin/phpunit ./tests --coverage-clover coverage.xml --whitelist ./public --log-junit $CIRCLE_TEST_REPORTS/tests.xml
+    - vendor/bin/phpunit ./public/tests --coverage-clover coverage.xml --whitelist ./public --log-junit $CIRCLE_TEST_REPORTS/tests.xml
   post:
     - bash <(curl -s https://codecov.io/bash)
 notify:

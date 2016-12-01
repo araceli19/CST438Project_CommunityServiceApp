@@ -3,9 +3,10 @@
   include_once('html/gmailDB.php');
 ?>
 <?php
-  include "tests/VolunteerTest.php";
-  $test = new VolunteerTest();
+  include "lib/Volunteer.php";
+  $test = new Volunteer();
   echo "test: ".$test->pop();
+?>
  <html>
      <head>
             <link rel="stylesheet" type="text/css" href="html/home.css">

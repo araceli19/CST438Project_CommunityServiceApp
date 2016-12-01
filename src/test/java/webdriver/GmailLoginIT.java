@@ -1,7 +1,7 @@
 /*
 	Noemi Cuin
 */
-
+package webdriver;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 
@@ -13,7 +13,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class GoogleLoginIT
+public class GmailLoginIT
 {
 
 	WebDriver driver = new ChromeDriver();
@@ -21,7 +21,7 @@ public class GoogleLoginIT
 	@Before
 	public void create()
 	{
-		driver.get("http://localhost:8080/html/home.html");
+		driver.get("http://localhost:8080/public/index.php");
 	}
 
 	@After
@@ -34,8 +34,8 @@ public class GoogleLoginIT
 	public void testGmail()
 	{
 		driver.findElement(By.id("Login")).click();
-		driver.findElement(By.id("email")).sendKeys("greatestever319@gmail.com"));
-		driver.findElement(By.id("password")).sendKeys("science831!"));
+		driver.findElement(By.id("email")).sendKeys("greatestever319@gmail.com");
+		driver.findElement(By.id("password")).sendKeys("science831!");
 
 		assertTrue(driver.findElement(By.id("email")).equals("greatestever319@gmail.com"));
 
@@ -45,7 +45,7 @@ public class GoogleLoginIT
 	public void testReceive()
 	{
 		driver.findElement(By.id("Get Info")).click();
-		driver.findElement(By.id("email").sendKeys("greatestever319@gmail.com"));
+		driver.findElement(By.id("email")).sendKeys("greatestever319@gmail.com");
 		assertTrue(driver.findElement(By.id("email")).equals("greatestever319@gmail.com"));
 	}
 

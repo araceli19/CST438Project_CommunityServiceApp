@@ -1,5 +1,5 @@
 <?php
-require_once ('../libraries/Google/autoload.php');
+require_once ('.././public/libraries/Google/autoload.php');
 
 $client_id = '23817671136-knscbm6p1l4aj046g7dun6hva9ovg1v2.apps.googleusercontent.com';
 $client_secret = 'eNYtCnk3MVXfBYtnCYEepqQd';

@@ -1,13 +1,16 @@
 machine:
   php:
     version: 7.0.4
-
   services:
     - mysql
 test:
+  pre: 
+    - php -S localhost:8080:
+          background: true
   override:
     - vendor/bin/phpunit ./public/tests --coverage-clover coverage.xml --whitelist ./public/html --log-junit $CIRCLE_TEST_REPORTS/tests.xml
-  post:
+    - mvn verify
+post:
     - bash <(curl -s https://codecov.io/bash)
 notify:
   webhooks:

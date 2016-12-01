@@ -1,5 +1,6 @@
 
 <?php
+ini_set('memory_limit', '256M');
 //testing Website Operator, back en query connection
 //connect to database
 include_once("Database.php");
@@ -65,7 +66,7 @@ class WebsiteOperatorConn{
             return "";
         }
     }
-    //retrieve all 
+    //retrieve all
     public static function getAllWebsiteOp(){
       $db = Database::setConnection();
 

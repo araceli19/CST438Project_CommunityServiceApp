@@ -1,4 +1,5 @@
 <?php
+ini_set('memory_limit', '256M');
 //test Volunteer table
 //adding mock data:
 //Start by inserting data and then test deletion, selection one and selection all Volunteers

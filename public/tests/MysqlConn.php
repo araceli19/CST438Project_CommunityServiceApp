@@ -1,4 +1,5 @@
 <?php
+ini_set('memory_limit', '256M');
 //copy of db connection
 //same as Database.php
 class MysqlConn{

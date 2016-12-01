@@ -1,5 +1,5 @@
 <?php
-
+ini_set('memory_limit', '256M');
 //conection to database with user name and password
 class Database{
         private static $pdo = NULL;

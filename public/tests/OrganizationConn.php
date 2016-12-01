@@ -1,4 +1,5 @@
 <?php
+ini_set('memory_limit', '256M');
 //will test the Volunteer Organization table
 
 include_once("Database.php"); //connects to the database
@@ -64,7 +65,7 @@ class OrganizationConn{
             return "";
         }
     }
-    //retrieves all organization 
+    //retrieves all organization
     public static function getAllOrg(){
       $db = Database::setConnection();
 

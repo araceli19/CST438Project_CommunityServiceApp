@@ -1,4 +1,5 @@
 <?php
+ini_set('memory_limit', '256M');
 //testing Website Operator table
 use PHPUnit\Framework\TestCase;
 include_once("WebsiteOperatorConn.php");

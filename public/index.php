@@ -1,4 +1,5 @@
 <?php
+ini_set('memory_limit', '256M');
   session_start(); //session start
   include_once('html/gmailDB.php');
 ?>
@@ -67,6 +68,9 @@
                       }
                   echo '</div>';
             ?>
+            <a href="https://codecov.io/gh/araceli19/CSTest">
+  <img src="https://codecov.io/gh/araceli19/CSTest/branch/master/graph/badge.svg" alt="Codecov" />
+</a>
       </div>
 
          <div class="intro" style="background-color:black;color:white;padding:20px;">

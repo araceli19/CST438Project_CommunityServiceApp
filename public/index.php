@@ -3,11 +3,7 @@ ini_set('memory_limit', '256M');
   session_start(); //session start
   include_once('html/gmailDB.php');
 ?>
-<?php
-  include "lib/Volunteer.php";
-  $test = new Volunteer();
-  echo "test: ".$test->pop();
-?>
+
  <html>
      <head>
             <link rel="stylesheet" type="text/css" href="html/home.css">

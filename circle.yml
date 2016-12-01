@@ -4,13 +4,13 @@ machine:
   services:
     - mysql
 test:
-#  pre: 
-#    - php -S localhost:8080:
-#         background: true
+  pre: 
+    - php -S localhost:8080:
+         background: true
   override:
     - vendor/bin/phpunit ./public/tests --coverage-clover coverage.xml --whitelist ./public/html --log-junit $CIRCLE_TEST_REPORTS/tests.xml
     - mvn verify
-post:
+  post:
     - bash <(curl -s https://codecov.io/bash)
 notify:
   webhooks:

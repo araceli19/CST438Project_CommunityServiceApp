@@ -19,7 +19,7 @@ public static function setConnection() {
 
           if(!isset(self::$pdo)){
               $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
-              self::$pdo = new PDO("mysql:host=127.0.0.1;dbname=circle_test", "ubuntu", "");
+              self::$pdo = new PDO("mysql:host=sedatabases.clgz1qavgh08.us-west-2.rds.amazonaws.com:3306;dbname=test", "seclass", "sedb1234");
           }
         }
     return self::$pdo;

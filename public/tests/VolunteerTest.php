@@ -5,6 +5,7 @@ ini_set('memory_limit', '256M');
 //Start by inserting data and then test deletion, selection one and selection all Volunteers
 
 use PHPUnit\Framework\TestCase;
+inlcude "public/lib/Volunteer.php";
 include_once("dbConnection.php");
 
 class VolunteerTest extends TestCase

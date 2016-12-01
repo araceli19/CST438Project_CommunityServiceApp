@@ -34,7 +34,7 @@ $getVolunteer = getVolunteerInfo();
                       <li><a href="login.php" ><h5>Home</h5></a></li>
                       <li class="active"><a href= "volunteerRegister.php" id="currentPage"><h5>Volunteer Registration</h5></a></li>
                       <li> <a href= "Search.php"><h5>Services</h5></a></li>
-                      <li><a href= "volunteer_profile.html"><h5>My Profile</h5></a></li>
+                      <li><a href= "volunteer_profile.php"><h5>My Profile</h5></a></li>
                       <li><a href= "contactUs.html"><h5>Contact Us</h5></a></li>
                     </ul>
                 </div>

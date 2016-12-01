@@ -24,14 +24,10 @@ database:
     - mysql -u ubuntu circle_test < tests/test.sql
     - mkdir -p $CIRCLE_TEST_REPORTS/phpunit
     - phpunit --log-junit $CIRCLE_TEST_REPORTS/phpunit/junit.xml tests
-  post:
-    - bash <(curl -s https://codecov.io/bash)
 test:
   override:
-    - mvn failsafe:integration-test
+    - vendor/bin/phpunit ./tests --coverage-clover coverage.xml --whitelist ./public --log-junit $CIRCLE_TEST_REPORTS/tests.xml
   post:
-    - mkdir -v -p $CIRCLE_TEST_REPORTS/reports/
-    - cp -v ./*/*-reports/*.xml $CIRCLE_TEST_REPORTS/reports/
     - bash <(curl -s https://codecov.io/bash)
 notify:
   webhooks:

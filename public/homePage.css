@@ -6,7 +6,7 @@ nav a{
 
 }
 nav a:hover, #currentPage{ /*pseudo class*/
-  background-color: #81B14F;
+  color: black;
   font-size: 2em;
   transition: .2s;
   text-align: center;
@@ -20,12 +20,10 @@ body,main, nav, footer{
 
 body{
   font-family:Trebuchet MS;
-  /*background-color: Cyan;*/
-  /*background: #C4BD8B; */
-    text-align: center;
+  text-align: center;
 
-/*background image*/
-    background: url(handBack.jpg) no-repeat center center fixed;
+    /*background image*/
+    background: url(images/handBack.jpg) no-repeat center center fixed;
     -webkit-background-size: cover; /* For WebKit*/
     -moz-background-size: cover;    /* Mozilla*/
     -o-background-size: cover;      /* Opera*/
@@ -37,23 +35,14 @@ img{
 }
 
 .intro{
-  text-align:justify;;
-  color: black;
+  text-align:center;;
+  color: white;
   padding-left: 50px;
   padding-right: 50px;
-  text-shadow: white 1px 1px;
-  font-family: "Pacifico", "Arial Rounded MT Bold", "Apple Chancery", "Georgia", "Times New Roman";
-
-
-  /*
-   margin: 1cm 5cm;
-    border-top-left-radius:175px;
-    border-top-right-radius:175px;
-    border-bottom-left-radius: 175px;
-    border-bottom-right-radius: 175px;
-    padding:20px;
-    padding-bottom:4px;
-*/
+  text-shadow: black 3px 3px;
+  font-size: 500%;
+  font-style: oblique;
+  font-family: "Palatino Linotype", "Pacifico", "Arial Rounded MT Bold", "Times New Roman";
 }
 
 .list
@@ -247,14 +236,8 @@ header h1.logo {
 }
 
 .login {
-  font-size: 200%;
-  display: block;
-  margin: auto;
+  padding-right: 50px;
   cursor: pointer;
-  text-align: center;
-  font-weight: bold;
-  color: #2779AA;
-  line-height: normal;
 }
 
 .logout {
@@ -264,4 +247,9 @@ header h1.logo {
 }
 #left{
   color: green;
+}
+
+.resize {
+    width: 150px;
+    height: auto;
 }

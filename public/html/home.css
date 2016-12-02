@@ -24,20 +24,12 @@ body,main, nav, footer{
 
 body{
   font-family:Trebuchet MS;
-  /*background-color: Cyan;*/
-  /*background: #C4BD8B; */
-    text-align: center;
-    background: url(park.jpg) no-repeat center center fixed;
-
-
-
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    overflow: auto;
+  text-align: center;
+  background: url(school.png);/
 }
 
 img{
-     opacity: 0.5;
+  /*   opacity: 0.5;   */
 }
 
 .intro{

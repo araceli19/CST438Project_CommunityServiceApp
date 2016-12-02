@@ -2,7 +2,7 @@
 
 <h2 id="title" align="center"> Community Service Finder </h2>
 
-        <link rel="stylesheet" type="text/css" href="profile.css">
+        <link rel="stylesheet" type="text/css" href="home.css">
 <br>
 <br>
 <div align="center" >
@@ -13,35 +13,33 @@ Profile
     <div id="LeftCol">
 
 
-        <div id="Photo"> <img src="noemi.png" alt="Mountain View" style="width:200px;height:140px;"> </div>
+        <div id="Photo"> <img src="images/userIcon.png" alt="Mountain View" style="width:200px;height:200px;"> </div>
         <div id="ProfileOptions">
         Volunteer Image
         </div>
 		<a href= "../index.php">Resume</a><br/>
 		<button type="button" onClick="location.href='volunteer_profile_edit.html'">Update Profile</button><br/>
-		<button type="button" onclick="alert('Hello world!')">Check Hours</button><br/>
-		<button type="button" onclick="alert('Hello world!')">Current Services</button><br/>
+		<button type="button" onclick="alert('2.5 Hours Completed')">Check Hours</button><br/>
+		<button type="button" onclick="alert('Beach Clean Up')">Current Services</button><br/>
     </div>
 
     <div id="Info">
         <p>
-		<div align="Left" >
+		<div align="Center" >
             <strong>Name:</strong>
-
-
+            User Name
         </p>
 
         <p>
             <strong>Grade:</strong>
-
+            11th: Junior
         </p>
 		<p>
             <strong>School:</strong>
-
+            California High School
         </p>
         <p>
             <strong>Biography: <br > <br ></strong>
-
         </p>
         <p>
             <strong>Contact Information: <br> <br><br></strong>

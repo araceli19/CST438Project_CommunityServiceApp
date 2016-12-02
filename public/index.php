@@ -10,11 +10,12 @@ ini_set('memory_limit', '256M');
 ?>
  <html>
      <head>
-            <link rel="stylesheet" type="text/css" href="html/home.css">
+       <link rel="stylesheet" type="text/css" href="homePage.css">
+<!--  <link rel="stylesheet" type="text/css" href="html/home.css">   -->
      </head>
      <body>
 
-  <nav class="navbar navbar-inverse">
+<!--  <nav class="navbar navbar-inverse"> -->
       <div class="container-fluid">
           <div class="navbar-header">
             <a class="navbar-brand" href="#"><h3>Community Service Finder</h3></a>
@@ -26,7 +27,7 @@ ini_set('memory_limit', '256M');
           <li><a href= "html/contactUs.html"><h5>Contact Us</h5></a></li>
       </ul>
     </div>
-  </nav>
+<!--  </nav>  -->
 
 
   <div id="left">
@@ -73,6 +74,16 @@ ini_set('memory_limit', '256M');
 </a>
       </div>
 
+      <div class="intro">
+        <h1> Find the service, make the change, leave the impact. </h3>
+        <br><br><br><br>
+        <img src="vol1.jpg" alt="Volunteer" style="width:304px;height:228px;align:left;">
+        <img src="vol3.jpg" alt="Volunteer" style="width:304px;height:228px;float:right;">
+
+      </div>
+
+
+<!--
          <div class="intro" style="background-color:black;color:white;padding:20px;">
              <h2><b>Welcome to the Community Service Finder!</b></h2>
              <div>
@@ -102,6 +113,8 @@ ini_set('memory_limit', '256M');
          </div>
 
          <br/> <br/> <br/>
+-->
+
       <script>
 
 		// initialize and setup facebook js sdk

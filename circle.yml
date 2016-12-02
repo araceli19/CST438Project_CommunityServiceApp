@@ -1,3 +1,9 @@
+dependencies:
+  pre:
+    - sudo apt-get update
+    - sudo apt-get intall python-dev
+    - sudo -H pip install awsebcli --upgrade --ignore-installed setuptools
+    - composer update
 machine:
   php:
     version: 7.0.4
@@ -12,3 +18,9 @@ test:
 notify:
   webhooks:
     - url: http://csumbse.net/harbormaster/hook/circleci/
+
+deployment:
+  production:
+    branch: master
+    commands:
+      - eb deploy --staged

@@ -115,6 +115,9 @@ INSERT INTO Website_Operator (Name, Phone_Num, Email, Password) VALUES('Bob Smit
 INSERT INTO Volunteer_Organization (Contact_name, Org_Name, Phone_Num, Email, Password) VALUES('Andrea Humer', 'Otter Express', '(831)122-1234', 'ottterE@yahoo.com', '123London');
 INSERT INTO Volunteer_Organization (Contact_name, Org_Name, Phone_Num, Email, Password) VALUES('Miriam London', 'Monterey Bay Aquarium', '(831)130-1744', 'MLondon@hotmail.com', '123Louisiana');
 INSERT INTO Volunteer_Organization (Contact_name, Org_Name, Phone_Num, Email, Password) VALUES('Mayra Coloma', 'Boys and Girls Club', '(431)567-1358', 'gabc@yahoo.com', 'pass123');
+INSERT INTO Volunteer_Organization (Contact_name, Org_Name, Phone_Num, Email, Password) VALUES('Rogelio Montoya', 'Dorthys Kitchen', '(831)757-3838', 'dkitchen@aol.com', 'dorthy831');
+INSERT INTO Volunteer_Organization (Contact_name, Org_Name, Phone_Num, Email, Password) VALUES('Ina Garten', 'Garden of California', '(456)125-6352', 'gardenCA@gmail.com', '342kitchen');
+
 
 INSERT INTO Volunteer (Name, DOB, Gender, School, School_ID, Hours, Phone_Num) VALUES('Cecilia Perez', '12-04-1998', 'Female', 'Seaside High School', 27493, 0, '5635935859');
 INSERT INTO Volunteer (Name, DOB, School, School_ID, Hours, Phone_Num) VALUES('Ozi Benini', '03-14-2003', 'Palma Middle School', 78420, 8.5, '6125025256');
@@ -129,6 +132,15 @@ INSERT INTO `Pending_Post` (`Hours_Available`, `Volunteers_Needed`, `Description
 
 INSERT INTO  Available_Services (Organization_ID, Category_ID, Hours_Available, Volunteers_Needed, Description, Name_Of_Service, Phone_Num) VALUES(1,2, 10, 5, 'Students needed to tutor first graders', 'Tutoring at Grace Elementary', '(347)390-0851');
 INSERT INTO  Available_Services (Organization_ID, Category_ID, Hours_Available, Volunteers_Needed, Description, Name_Of_Service, Phone_Num) VALUES(2,1, 5, 10, 'Community members needed to help with beach cleaning', 'Beach cleaning day', '(714)361-2381');
+INSERT INTO  Available_Services (Organization_ID, Category_ID, Hours_Available, Volunteers_Needed, Description, Name_Of_Service, Phone_Num) VALUES(3,3, 23, 18, 'Assist in serving a holiday dinner to the homeless', 'Holiday Dinner', '(343)562-2367');
+INSERT INTO  Available_Services (Organization_ID, Category_ID, Hours_Available, Volunteers_Needed, Description, Name_Of_Service, Phone_Num) VALUES(4,3, 13, 12, 'Manage toy collection by keeping inventory of donated toys', 'Christmas Toy Drive', '(534)465-6285');
+INSERT INTO  Available_Services (Organization_ID, Category_ID, Hours_Available, Volunteers_Needed, Description, Name_Of_Service, Phone_Num) VALUES(5,3, 3, 7, 'Help set up booths for the annual Church Carnival', 'Church Carnival', '(934)153-6372');
+INSERT INTO  Available_Services (Organization_ID, Category_ID, Hours_Available, Volunteers_Needed, Description, Name_Of_Service, Phone_Num) VALUES(6,4, 4, 7, 'Make sure animals are fed and kennels are cleaned', 'Annie Adoptions', '(225)735-1953');
+INSERT INTO  Available_Services (Organization_ID, Category_ID, Hours_Available, Volunteers_Needed, Description, Name_Of_Service, Phone_Num) VALUES(7,4, 2, 3, 'Check in all participants', 'Puppy Walkathon', '(994)026-5027');
+INSERT INTO  Available_Services (Organization_ID, Category_ID, Hours_Available, Volunteers_Needed, Description, Name_Of_Service, Phone_Num) VALUES(8,2, 30, 11, 'Senior citizens will need help navigating through the internet', 'Senior Tech Literacy', '(742)752-7428');
+INSERT INTO  Available_Services (Organization_ID, Category_ID, Hours_Available, Volunteers_Needed, Description, Name_Of_Service, Phone_Num) VALUES(9,2, 4, 6, 'Speak to 8th graders about the positivity of highschool', 'No Fear For Highschool', '(852)853-2853');
+INSERT INTO  Available_Services (Organization_ID, Category_ID, Hours_Available, Volunteers_Needed, Description, Name_Of_Service, Phone_Num) VALUES(10,1, 16, 9, 'Maintain proper sorting of old technology that will be recycled', 'Recycle Old Electronics', '(373)332-4836');
+
 
 INSERT INTO Current_Volunteers (Volunteer_ID, Available_Service_ID, Hours) VALUES (2, 1, 2.5);
 INSERT INTO Current_Volunteers (Volunteer_ID, Available_Service_ID, Hours) VALUES (3, 1, 2.0);

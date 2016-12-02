@@ -43,7 +43,7 @@ $getVolunteer = getVolunteerInfo();
     </div>
 </nav>
 <div id="ProfilePage" class="demo-table">
-  <div id="LeftCol">
+  <div >
 
   <strong>Photo</strong>
   <input type="file" name="Photo"/>
@@ -62,9 +62,11 @@ $getVolunteer = getVolunteerInfo();
 
 
 
-    <div id="Info">
+    <div class="demo-table">
+        <div align="Center" >
+      <br>
           <p>
-		        <div align="Center" >
+
 
             <strong>Name:</strong>
             <?php echo $name; ?>

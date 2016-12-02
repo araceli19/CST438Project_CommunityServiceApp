@@ -7,20 +7,21 @@ ini_set('memory_limit', '256M');
  <html>
      <head>
        <link rel="stylesheet" type="text/css" href="homePage.css">
-<!--  <link rel="stylesheet" type="text/css" href="html/home.css">   -->
      </head>
      <body>
 
 <!--  <nav class="navbar navbar-inverse"> -->
       <div class="container-fluid">
+
           <div class="navbar-header">
-            <a class="navbar-brand" href="#"><h3>Community Service Finder</h3></a>
+            <a class="navbar-brand" href="#"> <img class="resize" src="images/logo.png" /></a>
           </div>
+
       <ul align="right" class="nav navbar-nav">
-          <li class="active"><a href="index.php" id="currentPage"><h5>Home</h5></a></li>
-          <li> <a href= "html/Search.php"><h5>Services</h5></a></li>
-          <li><a href= "html/volunteer_profile.html"><h5>My Profile</h5></a></li>
-          <li><a href= "html/contactUs.html"><h5>Contact Us</h5></a></li>
+          <li class="active"><a href="index.php" id="currentPage"><h2>Home</h2></a></li>
+          <li><a href= "html/Search.php"><h1>Services</h1></a></li>
+          <li><a href= "html/volunteer_profile.html"><h2>My Profile</h2></a></li>
+          <li><a href= "html/contactUs.html"><h2>Contact Us</h2></a></li>
       </ul>
     </div>
 <!--  </nav>  -->
@@ -32,10 +33,9 @@ ini_set('memory_limit', '256M');
 
 
       <?php
-               echo '<div style="margin:20px">';
                 if (isset($authUrl)) {
-                   	  echo '<div align="left">';
-                   	  echo '<a class="login" href="' . $authUrl . '"><img src="html/images/gmail_btn.png" /></a>';
+                   	  echo '<div align="right">';
+                   	  echo '<a class="login" href="' . $authUrl . '"><img src="html/images/button.png" /></a>';
                echo '</div>'; }
 
                else {
@@ -65,18 +65,25 @@ ini_set('memory_limit', '256M');
                       }
                   echo '</div>';
             ?>
-            <a href="https://codecov.io/gh/araceli19/CSTest">
-  <img src="https://codecov.io/gh/araceli19/CSTest/branch/master/graph/badge.svg" alt="Codecov" />
+
 </a>
       </div>
 
+<!-- Intro div. style the title/home page -->
       <div class="intro">
-        <h1> Find the service, make the change, leave the impact. </h3>
-        <br><br><br><br>
-        <img src="vol1.jpg" alt="Volunteer" style="width:304px;height:228px;align:left;">
-        <img src="vol3.jpg" alt="Volunteer" style="width:304px;height:228px;float:right;">
-
+         <br> Community Service Finder <br>
       </div>
+<!-- Rest of content in home page -->
+      <div style="color:#4d4f51; font-family:Palatino Linotype; font-size: 200%;">
+        <p> We strive to make our community better by connecting
+        individuals and partners <br />together
+        to allow anyone to fulfill their community service needs. </p>
+        <br><br>
+        <h2 style="font-style: oblique; color:white; text-shadow: black 2px 2px;">
+          Find the service, make the change, leave the impact.
+        <h2>
+      </div>
+
 
 
 <!--
@@ -111,72 +118,5 @@ ini_set('memory_limit', '256M');
          <br/> <br/> <br/>
 -->
 
-      <script>
-
-		// initialize and setup facebook js sdk
-    //ecapsulate connection into function
-    function establishConnection() {
-      window.fbAsyncInit = function() {
-  		    FB.init({
-  		      appId      : '1632270773737570',
-  		      xfbml      : true,
-  		      version    : 'v2.5'
-  		    });
-  		    FB.getLoginStatus(function(response) {
-  		    	if (response.status === 'connected') {
-  		    		document.getElementById('status').innerHTML = 'We are connected.';
-  		    		document.getElementById('login').style.visibility = 'hidden';
-  		    	} else if (response.status === 'not_authorized') {
-  		    		document.getElementById('status').innerHTML = 'We are not logged in.'
-  		    	} else {
-  		    		document.getElementById('status').innerHTML = 'You are not logged into Facebook.';
-  		    	}
-  		    });
-  		};
-      return true;
-    }
-
-		function(d, s, id){
-		    var js, fjs = d.getElementsByTagName(s)[0];
-		    if (d.getElementById(id)) {return;}
-		    js = d.createElement(s); js.id = id;
-		    js.src = "//connect.facebook.net/en_US/sdk.js";
-		    fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));
-
-		// login with facebook with extra permissions
-    //after login, retirve user information
-		function login() {
-			FB.login(function(response) {
-				if (response.status === 'connected') {
-		    		document.getElementById('status').innerHTML = 'We are connected.';
-		    		document.getElementById('login').style.visibility = 'hidden';
-		    	} else if (response.status === 'not_authorized') {
-		    		document.getElementById('status').innerHTML = 'We are not logged in.'
-		    	} else {
-		    		document.getElementById('status').innerHTML = 'You are not logged into Facebook.';
-		    	}
-			}, {scope: 'email'});
-
-      FB.api('/me', 'GET', {fields: 'first_name,last_name,name,id'}, function(response) {
-				document.getElementById('status').innerHTML = response.id;
-			});
-		}
-
-    //establish connection
-    establishConnection();
-/*
-		// getting basic user info
-		function getInfo() {
-			FB.api('/me', 'GET', {fields: 'first_name,last_name,name,id'}, function(response) {
-				document.getElementById('status').innerHTML = response.id;
-			});
-		}
-*/
-	</script>
-
-	<div id="status"></div>
-	<!--<button onclick="getInfo()">Get Info</button>-->
-	<button onclick="login()" id="login">Login</button>
 </body>
 </html>

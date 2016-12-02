@@ -1,5 +1,5 @@
 <?php
- 
+
 function getGoogleUser(){
     $dbConnection = getDatabaseConnection();
     //global $dbConnection; //use global variable to call it anywhere in function

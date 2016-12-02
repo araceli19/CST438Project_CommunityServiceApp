@@ -25,7 +25,7 @@ $getVolunteer = getVolunteerInfo();
 ?>
 
 
-        <link rel="stylesheet" type="text/css" href="profile.css">
+        <link rel="stylesheet" type="text/css" href="home.css">
         <nav class="navbar navbar-inverse">
           <div class="container-fluid">
                 <div class="navbar-header">
@@ -49,18 +49,13 @@ $getVolunteer = getVolunteerInfo();
     <div id="LeftCol">
 
 		<strong>Photo</strong>
-		<input type="file" name="Photo"/>
-        <div id="Photo"> <img src="noemi.png" alt="Mountain View" style="width:200px;height:140px;"> </div>
+
+        <div id="Photo"> <img src="images/userIcon.png" alt="Mountain View" style="width:200px;height:200px;"> </div>
         <div id="ProfileOptions">
 
-        </div>
-		<strong>Resume</strong>
-		<input type="file" name="Resume"/>
-		<button type="button" onClick="location.href='volunteer_profile.php'">Save Changes</button><br/>
-		<button type="button" onClick="location.href='volunteer_profile.php'">Cancel</button><br/>
-    </div>
 
-    <div id="Info">
+
+    <div>
         <p>
             <strong>Name:</strong>
             <input type="text" name="Name" value = "<?php echo $name; ?>"/>
@@ -96,7 +91,8 @@ $getVolunteer = getVolunteerInfo();
         </p>
 
     </div>
+    <div><button type="button" onClick="location.href='volunteer_profile.php'">Save Changes</button>
+    <button type="button" onClick="location.href='volunteer_profile.php'">Cancel</button><br/></div>
 
-    <!-- Needed because other elements inside ProfilePage have floats -->
-    <div style="clear:both"></div>
+
 </div>

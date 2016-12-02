@@ -24,7 +24,7 @@ $getVolunteer = getVolunteerInfo();
        $bio = "Actively looking for Community Service Opportunities!"
 ?>
 
-        <link rel="stylesheet" type="text/css" href="profile.css">
+        <link rel="stylesheet" type="text/css" href="home.css">
 
 
 <nav class="navbar navbar-inverse">
@@ -42,23 +42,22 @@ $getVolunteer = getVolunteerInfo();
         </ul>
     </div>
 </nav>
-<div id="ProfilePage" class="demo-table">
+<div  class="demo-table">
   <div >
 
   <strong>Photo</strong>
-  <input type="file" name="Photo"/>
+
   <div id="Photo"> <img src="images/userIcon.png" alt="Mountain View" style="width:200px;height:200px;"> </div>
   <div id="ProfileOptions">
 
 
-		<a href= "../index.php">Resume</a><br/>
+		<a href= "../../index.php">Resume</a><br/>
 
 		<button type="button" onClick="location.href='volunteer_profile_edit.php'">Update Profile</button><br/>
 		<button type="button" onclick="alert('2.5 Hours Completed')">Check Hours</button><br/>
 		<button type="button" onclick="alert('Beach Clean Up!')">Current Services</button><br/>
 
     </div>
-
 
 
 
@@ -103,8 +102,4 @@ $getVolunteer = getVolunteerInfo();
              Phone Number: <?php echo $phoneNum; ?>
         </p>
 
-    </div>
-
-    <!-- Needed because other elements inside ProfilePage have floats -->
-    <div style="clear:both"></div>
     </div>

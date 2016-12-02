@@ -4,7 +4,7 @@
 
 $client_id = '23817671136-knscbm6p1l4aj046g7dun6hva9ovg1v2.apps.googleusercontent.com';
 $client_secret = 'eNYtCnk3MVXfBYtnCYEepqQd';
-$redirect_uri = 'http://localhost:8080/index.php';
+$redirect_uri = 'http://sample-env.8fm6rg3smv.us-west-2.elasticbeanstalk.com/index.php';
 
 //database
 $host_name= "sedatabases.clgz1qavgh08.us-west-2.rds.amazonaws.com:3306";

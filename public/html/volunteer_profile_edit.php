@@ -1,4 +1,11 @@
-
+<?php
+session_start(); //session start
+//this file is called for conneciton to database
+require_once ('../../libraries/Google/autoload.php');
+include('include/database.php');
+include('gmailDB.php');
+$_SESSION['getId'] = $_POST['getId'];
+?>
 
 <h2 id="title" align="center"> Community Service Finder </h2>
 

@@ -1,30 +1,40 @@
+<?php
+session_start();
+include('include/database.php');
+include('setVolunteerRegistration.php');
+?>
 
+<link rel="stylesheet" type="text/css" href="profile.css">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#"><h4>Profile</h4></a>
+        </div>
+        <ul align="right" class="nav navbar-nav">
+          <li><a href="../../index.php" ><h5>Home</h5></a></li>
+          <li> <a href= "Search.php"><h5>Services</h5></a></li>
+          <li class="active"><a href= "provider_profile.php" id="currentPage"><h5>Provider Profile</h5></a></li>
+          <li><a href= "contactUs.html"><h5>Contact Us</h5></a></li>
+        </ul>
+    </div>
+</nav>
 
-<h2 id="title" align="center"> Community Service Finder </h2>
-
-        <link rel="stylesheet" type="text/css" href="profile.css">
-<br>
-<br>
-<div align="center" >
-<a href= "../../index.php">Home</a><br/>
-Profile
-</div>
-<div id="ProfilePage">
+<div align="center"  class="demo-table">
     <div id="LeftCol">
 
 
-        <div id="Photo"> <img src="noemi.png" alt="Mountain View" style="width:200px;height:140px;"> </div>
+        <div id="Photo"> <img src="../images/logo.png" alt="Mountain View" style="width:160px;height:140px;"> </div>
         <div id="ProfileOptions">
-        Volunteer Image
+      Provider Image
         </div>
 
-		<button type="button" onClick="location.href='provider_profile_edit.html'">Update Profile</button><br/>
+		<button type="button" onClick="location.href='provider_profile_edit.php'">Update Profile</button><br/>
 		<button type="button" onclick="alert('Hello world!')">Current Volunteers</button><br/>
     </div>
 
-    <div id="Info">
+    <div class="demo-table" align="center" >
         <p>
-		<div align="Left" >
+		<div align="center" >
             <strong>Organization Name:</strong>
 
 

@@ -62,3 +62,25 @@ border: 1px solid orange;
 
 border: 1px solid purple;
 }
+.demo-table {
+  align: center;
+  text-align: left;
+   padding-left: .5cm;
+  background:#d8f3d8;
+  width: 60%;border-spacing: initial;
+  margin: center;
+  word-break: break-word;
+  table-layout: auto;
+  line-height:1.8em;
+  color:#333;
+}
+.demo-table td {
+  padding: 15px 15px 15px 15px;
+}
+body{
+  background: url(park.jpg) no-repeat center center fixed;
+}
+p{
+  text-align: left;
+   padding-left: .5cm;
+}

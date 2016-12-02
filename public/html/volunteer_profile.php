@@ -1,61 +1,108 @@
+<?php
+session_start();
+include('include/database.php');
+include('setVolunteerRegistration.php');
+
+$id = $_POST['getId'];
+$googleId = $_SESSION['userId'];
+$orgId = $_SESSION['orgId'];
+
+$gUser= getGoogleUser();
+
+  if(!empty($gUser)){  $name =  $gUser['google_name'];  $email = $gUser['google_email']; }
+  else{  $name =  ""; $email = ""; }
+
+$getVolunteer = getVolunteerInfo();
+  if($getVolunteer){ $nameV =  $getVolunteer['Name']; $dob = $getVolunteer['DOB']; $gender = $getVolunteer['Gender'];
+                     $school = $getVolunteer['School']; $phoneNum = $getVolunteer['Phone_Num'];}
+  else{  $nameV="";  $school="";
+         $phoneNum=""; $gender = "";
+
+       }
+
+       $grade = "10";
+       $bio = "Actively looking for Community Service Opportunities!"
+?>
+
+        <link rel="stylesheet" type="text/css" href="profile.css">
 
 
-<h2 id="title" align="center"> Community Service Finder </h2>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#"><h3>My Profile</h3></a>
 
-        <link rel="stylesheet" type="text/css" href="home.css">
-<br>
-<br>
-<div align="center" >
-<a href= "../../index.php">Home</a><br/>
-Profile
-</div>
-<div id="ProfilePage">
-    <div id="LeftCol">
-
-
-        <div id="Photo"> <img src="images/userIcon.png" alt="Mountain View" style="width:200px;height:200px;"> </div>
-        <div id="ProfileOptions">
-        Volunteer Image
         </div>
+        <ul align="right" class="nav navbar-nav">
+          <li><a href="../../index.php" ><h5>Home</h5></a></li>
+          <li ><a href= "volunteerRegister.php" ><h5>Volunteer Registration</h5></a></li>
+          <li> <a href= "Search.php" ><h5>Services</h5></a></li>
+          <li class="active"><a href= "volunteer_profile.php" id="currentPage"><h5>My Profile</h5></a></li>
+          <li><a href= "contactUs.html"><h5>Contact Us</h5></a></li>
+        </ul>
+    </div>
+</nav>
+<div id="ProfilePage" class="demo-table">
+  <div id="LeftCol">
+
+  <strong>Photo</strong>
+  <input type="file" name="Photo"/>
+  <div id="Photo"> <img src="images/userIcon.png" alt="Mountain View" style="width:200px;height:200px;"> </div>
+  <div id="ProfileOptions">
+
+
 		<a href= "../index.php">Resume</a><br/>
-		<button type="button" onClick="location.href='volunteer_profile_edit.html'">Update Profile</button><br/>
+
+		<button type="button" onClick="location.href='volunteer_profile_edit.php'">Update Profile</button><br/>
 		<button type="button" onclick="alert('2.5 Hours Completed')">Check Hours</button><br/>
-		<button type="button" onclick="alert('Beach Clean Up')">Current Services</button><br/>
+		<button type="button" onclick="alert('Beach Clean Up!')">Current Services</button><br/>
+
     </div>
 
+
+
+
     <div id="Info">
-        <p>
-		<div align="Center" >
+          <p>
+		        <div align="Center" >
+
             <strong>Name:</strong>
-            User Name
+            <?php echo $name; ?>
+
         </p>
 
         <p>
             <strong>Grade:</strong>
-            11th: Junior
+
+          <?php echo $grade; ?>
+
         </p>
-		<p>
+    <p>
             <strong>School:</strong>
-            California High School
+
+
+
+          <?php echo $school; ?>
         </p>
         <p>
-            <strong>Biography: <br > <br ></strong>
-        </p>
-        <p>
-            <strong>Contact Information: <br> <br><br></strong>
+          <strong>Gender:</strong>
+        <?php echo $gender; ?>
 
-            <span align="left">
-              <a target="_blank" title="follow me on twitter" href="http://www.twitter.com/NoemisHilarious"><img alt="follow me on twitter"
-                src="//login.create.net/images/icons/user/twitter_30x30.png" border=0></a>
+      </p>
+      <p>
 
-              <br>
-                <a target="_blank" title="find us on Facebook" href="http://www.facebook.com/noemi.cuin"><img alt="follow me on facebook"
-                  src="//login.create.net/images/icons/user/facebook_30x30.png" border=0></a>
-             </span>
+              <strong>Biography:</strong>
+          <?php echo $bio; ?>
+
+      </p>
+      <p>
+        <strong>Contact Information: </strong>
+          <br>
+             Phone Number: <?php echo $phoneNum; ?>
         </p>
-		</div>
+
     </div>
 
     <!-- Needed because other elements inside ProfilePage have floats -->
     <div style="clear:both"></div>
-</div>
+    </div>

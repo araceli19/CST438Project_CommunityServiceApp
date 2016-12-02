@@ -8,10 +8,13 @@
     //$host = "127.0.0.1";
     //$username = "root";
     //$password = "123";
-
+    try{
         //create new connection
         $dbConn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-
+      }
+      catch(PDOException $error){
+                echo $error->getMessage();
+        }
         //setting errorhndling
         //$dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $dbConn;

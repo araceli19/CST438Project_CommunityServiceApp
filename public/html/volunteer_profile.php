@@ -6,7 +6,7 @@
 <br>
 <br>
 <div align="center" >
-<a href= "../index.php">Home</a><br/>
+<a href= "../../index.php">Home</a><br/>
 Profile
 </div>
 <div id="ProfilePage">
@@ -17,29 +17,30 @@ Profile
         <div id="ProfileOptions">
         Volunteer Image
         </div>
-
-		<button type="button" onClick="location.href='provider_profile_edit.html'">Update Profile</button><br/>
-		<button type="button" onclick="alert('Hello world!')">Current Volunteers</button><br/>
+		<a href= "../index.php">Resume</a><br/>
+		<button type="button" onClick="location.href='volunteer_profile_edit.html'">Update Profile</button><br/>
+		<button type="button" onclick="alert('Hello world!')">Check Hours</button><br/>
+		<button type="button" onclick="alert('Hello world!')">Current Services</button><br/>
     </div>
 
     <div id="Info">
         <p>
 		<div align="Left" >
-            <strong>Organization Name:</strong>
+            <strong>Name:</strong>
 
 
         </p>
 
         <p>
-            <strong>Address:</strong>
+            <strong>Grade:</strong>
 
         </p>
 		<p>
-            <strong>Service:</strong>
+            <strong>School:</strong>
 
         </p>
         <p>
-            <strong>Overview: <br > <br ></strong>
+            <strong>Biography: <br > <br ></strong>
 
         </p>
         <p>

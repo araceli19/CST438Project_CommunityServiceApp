@@ -6,7 +6,7 @@
 <br>
 <br>
 <div align="center" >
-<a href= "../index.php">Home</a><br/>
+<a href= "../../index.php">Home</a><br/>
 Profile
 </div>
 <div id="ProfilePage">

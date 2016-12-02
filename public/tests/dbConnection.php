@@ -1,5 +1,4 @@
 <?php
-ini_set('memory_limit', '256M');
 //connects to volunter database
 include_once("Database.php");
 class dbConnection{

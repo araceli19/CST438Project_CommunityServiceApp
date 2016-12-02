@@ -53,7 +53,7 @@ function createSearchTable($parameter)
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="home.css">
-  <a href= "../index.php">Home</a>
+  <a href= "../../index.php">Home</a>
 
 <title> Community Service Finder </title>
 </head>

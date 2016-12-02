@@ -1,6 +1,7 @@
 <?php
 session_start(); //session start
 //this file is called for conneciton to database
+require_once ('../../libraries/Google/autoload.php');
 include('include/database.php');
 include('gmailDB.php');
 $_SESSION['getId'] = $_POST['getId'];
@@ -67,7 +68,7 @@ function getSearch(){
               <a class="navbar-brand" href="#"><h3>Community Service Finder</h3></a>
             </div>
         <ul align="right" class="nav navbar-nav">
-            <li ><a href="../index.php" ><h5>Home</h5></a></li>
+            <li ><a href="../../index.php" ><h5>Home</h5></a></li>
             <li class="active"> <a href= "Search.php" id="currentPage"><h5>Services</h5></a></li>
             <li><a href= "volunteer_profile.html"><h5>My Profile</h5></a></li>
             <li><a href= "contactUs.html"><h5>Contact Us</h5></a></li>

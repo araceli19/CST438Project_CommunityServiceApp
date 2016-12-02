@@ -2,6 +2,18 @@
 	Noemi Cuin
 */
 package webdriver;
+import org.openqa.selenium.By;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import java.util.List;
+import org.openqa.selenium.firefox.*;
+import java.util.concurrent.*;
+
+/*
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 
@@ -21,7 +33,7 @@ public class GmailLoginIT
 	@Before
 	public void create()
 	{
-		driver.get("http://localhost:8080/public/index.php");
+		driver.get("http://localhost:8080/src/test/java/webdriver/home.html");
 	}
 
 	@After
@@ -49,4 +61,4 @@ public class GmailLoginIT
 		assertTrue(driver.findElement(By.id("email")).equals("greatestever319@gmail.com"));
 	}
 
-}
+}*/

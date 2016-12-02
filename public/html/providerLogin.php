@@ -13,6 +13,7 @@
         </header>
         <nav>
         <a href= "providerLogin.html" id="currentPage">Home</a>
+        <a href= "../../index.php">Home</a>
         <a href= "search.php">Services</a>
         <a href= "contactUs.html">Contact Us</a>
         </nav>

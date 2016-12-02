@@ -31,10 +31,10 @@ $getVolunteer = getVolunteerInfo();
                       <a class="navbar-brand" href="#"><h3>Volunteer Registration</h3></a>
                     </div>
                     <ul align="right" class="nav navbar-nav">
-                      <li><a href="../index.php" ><h5>Home</h5></a></li>
+                      <li><a href="../../index.php" ><h5>Home</h5></a></li>
                       <li class="active"><a href= "volunteerRegister.php" id="currentPage"><h5>Volunteer Registration</h5></a></li>
                       <li> <a href= "Search.php"><h5>Services</h5></a></li>
-                      <li><a href= "volunteer_profile.php"><h5>My Profile</h5></a></li>
+                      <li><a href= "volunteer_profile.html"><h5>My Profile</h5></a></li>
                       <li><a href= "contactUs.html"><h5>Contact Us</h5></a></li>
                     </ul>
                 </div>
@@ -137,7 +137,7 @@ $getVolunteer = getVolunteerInfo();
                                 echo "<div  align='center' style=color:Red;>";
                                   echo '<script type="text/javascript" class="alert alert-success">';
                                     echo 'alert("You have registered successfully!");';
-                                    echo 'window.location.href = "../index.php";';
+                                    echo 'window.location.href = "../../index.php";';
                                   echo '</script>';
                                   unset($_POST);
                                 echo "</div>";

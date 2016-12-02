@@ -36,15 +36,12 @@
                    	  echo '<div align="right">';
                    	  echo '<a class="login" href="' . $authUrl . '"><img src="public/html/images/button.png" /></a>';
                echo '</div>'; }
-
                else {
                  	$user = $service->userinfo->get(); //get user info
-
                  	$mysqli = new mysqli($host_name, $db_username, $db_password, $db_name); //connect db
                   if ($mysqli->connect_error) { die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error); }
                  	    $result = $mysqli->query("SELECT COUNT(google_id) as usercount FROM google_users WHERE google_id=$user->id");
                  	    $user_count = $result->fetch_object()->usercount; //will return 0 if user doesn't exist
-
                	if($user_count) //if user already exist change greeting text to "Welcome Back"
                    {
                       $_SESSION['userId'] = $user->id;

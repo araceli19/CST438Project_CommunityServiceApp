@@ -4,13 +4,8 @@ dependencies:
     - sudo apt-get intall python-dev
     - sudo -H pip install awsebcli --upgrade --ignore-installed setuptools
     - composer update
-machine:
-  php:
-    version: 7.0.4
-  services:
-    - mysql
 test:
-  pre: 
+  pre:
     - php -S localhost:8080:
          background: true
   override:

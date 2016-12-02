@@ -1,7 +1,6 @@
 <?php
-ini_set('memory_limit', '256M');
   session_start(); //session start
-  include_once('html/gmailDB.php');
+  require_once('libraries/Google/autoload.php');
 ?>
 
  <html>
@@ -19,9 +18,9 @@ ini_set('memory_limit', '256M');
 
       <ul align="right" class="nav navbar-nav">
           <li class="active"><a href="index.php" id="currentPage"><h2>Home</h2></a></li>
-          <li><a href= "html/Search.php"><h1>Services</h1></a></li>
-          <li><a href= "html/volunteer_profile.html"><h2>My Profile</h2></a></li>
-          <li><a href= "html/contactUs.html"><h2>Contact Us</h2></a></li>
+          <li><a href= "public/html/Search.php"><h1>Services</h1></a></li>
+          <li><a href= "public/html/volunteer_profile.html"><h2>My Profile</h2></a></li>
+          <li><a href= "public/html/contactUs.html"><h2>Contact Us</h2></a></li>
       </ul>
     </div>
 <!--  </nav>  -->
@@ -35,7 +34,7 @@ ini_set('memory_limit', '256M');
       <?php
                 if (isset($authUrl)) {
                    	  echo '<div align="right">';
-                   	  echo '<a class="login" href="' . $authUrl . '"><img src="html/images/button.png" /></a>';
+                   	  echo '<a class="login" href="' . $authUrl . '"><img src="public/html/images/button.png" /></a>';
                echo '</div>'; }
 
                else {
@@ -83,40 +82,5 @@ ini_set('memory_limit', '256M');
           Find the service, make the change, leave the impact.
         <h2>
       </div>
-
-
-
-<!--
-         <div class="intro" style="background-color:black;color:white;padding:20px;">
-             <h2><b>Welcome to the Community Service Finder!</b></h2>
-             <div>
-                We strive to make our community better by
-                connecting students and partners together
-                so that students can fulfull their community
-                service requirements and our partners can
-                receive dedicated workers.
-
-                <br/><br/>
-
-                As a student, you'll be able to:
-
-                    <ul class="list">
-                        <li> search for community service opportunites </li>
-                        <li>  keep track of your completed hours  </li>
-                        <li>manage your own volunteer profile</li>
-                    </ul>
-
-                 As a community service provider, you'll be able to:
-                     <ul class="list">
-                         <li> post your volunteer opportunities </li>
-                         <li> review student volunteers </li>
-                         <li> keep track of previous volunteers </li>
-                     </ul>
-             </div>
-         </div>
-
-         <br/> <br/> <br/>
--->
-
 </body>
 </html>

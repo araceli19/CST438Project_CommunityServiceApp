@@ -70,7 +70,7 @@ function getSearch(){
         <ul align="right" class="nav navbar-nav">
             <li ><a href="../../index.php" ><h5>Home</h5></a></li>
             <li class="active"> <a href= "Search.php" id="currentPage"><h5>Services</h5></a></li>
-            <li><a href= "volunteer_profile.html"><h5>My Profile</h5></a></li>
+            <li><a href= "volunteer_profile.php"><h5>My Profile</h5></a></li>
             <li><a href= "contactUs.html"><h5>Contact Us</h5></a></li>
         </ul>
       </div>

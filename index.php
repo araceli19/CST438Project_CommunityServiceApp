@@ -1,11 +1,12 @@
 <?php
   session_start(); //session start
   require_once('libraries/Google/autoload.php');
+  include_once('public/html/gmailDB.php');
 ?>
 
  <html>
      <head>
-       <link rel="stylesheet" type="text/css" href="homePage.css">
+       <link rel="stylesheet" type="text/css" href="public/homePage.css"/>
      </head>
      <body>
 
@@ -13,13 +14,13 @@
       <div class="container-fluid">
 
           <div class="navbar-header">
-            <a class="navbar-brand" href="#"> <img class="resize" src="images/logo.png" /></a>
+            <a class="navbar-brand" href="#"> <img class="resize" src="public/images/logo.png" /></a>
           </div>
 
       <ul align="right" class="nav navbar-nav">
           <li class="active"><a href="index.php" id="currentPage"><h2>Home</h2></a></li>
           <li><a href= "public/html/Search.php"><h1>Services</h1></a></li>
-          <li><a href= "public/html/volunteer_profile.html"><h2>My Profile</h2></a></li>
+          <li><a href= "public/html/volunteer_profile.php"><h2>My Profile</h2></a></li>
           <li><a href= "public/html/contactUs.html"><h2>Contact Us</h2></a></li>
       </ul>
     </div>

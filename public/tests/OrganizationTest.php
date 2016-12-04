@@ -1,8 +1,7 @@
 <?php
-ini_set('memory_limit', '256M');
 //testing Volunteer Organization with mock tests
 use PHPUnit\Framework\TestCase;
-include_once("OrganizationConn.php");
+include_once("public/lib/OrganizationConn.php");
 
 class OrganizationTest extends TestCase
 {

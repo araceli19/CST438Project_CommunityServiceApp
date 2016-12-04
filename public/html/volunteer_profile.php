@@ -53,7 +53,7 @@ $getVolunteer = getVolunteerInfo();
 
 		<a href= "../../index.php">Resume</a><br/>
 
-		<button type="button" onClick="location.href='volunteer_profile_edit.php'">Update Profile</button><br/>
+		<input type="button" name="UpdateProfile" onClick="location.href='volunteer_profile_edit.php'" value="Update Profile"/><br/>
 		<button type="button" onclick="alert('2.5 Hours Completed')">Check Hours</button><br/>
 		<button type="button" onclick="alert('Beach Clean Up!')">Current Services</button><br/>
 

@@ -11,10 +11,6 @@ public static function setConnection() {
 
         if(!isset($pdo)){
 
-          $host = "127.0.0.1";
-          $user = "root";
-          $password = "123";
-          $dbname = "Community_Service_Finder";
           //$conn = new mysqli($host, $user, $password, $dbname);
 
           if(!isset(self::$pdo)){

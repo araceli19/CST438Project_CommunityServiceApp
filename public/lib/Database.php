@@ -4,21 +4,19 @@
 class Database{
         private static $pdo = NULL;
         private function __construct() {}
-        private function __clone() {}
+        private function __clone() {} 
 
-
-public static function setConnection() {
-
-        if(!isset($pdo)){
-
-          //$conn = new mysqli($host, $user, $password, $dbname);
-
-          if(!isset(self::$pdo)){
-              $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
-              self::$pdo = new PDO("mysql:host=sedatabases.clgz1qavgh08.us-west-2.rds.amazonaws.com:3306;dbname=test", "seclass", "sedb1234");
+  public static function setConnection() {
+          //funciton sets connection to database hosted by AWS
+          if(!isset($pdo)){
+            //$conn = new mysqli($host, $user, $password, $dbname);
+            if(!isset(self::$pdo)){
+                $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
+                self::$pdo = new PDO("mysql:host=sedatabases.clgz1qavgh08.us-west-2.rds.amazonaws.com:3306;dbname=test", "seclass", "sedb1234");
+            }
           }
-        }
-    return self::$pdo;
-    }
+          //returns connection
+      return self::$pdo;
+      }
 }
 ?>

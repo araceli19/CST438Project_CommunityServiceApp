@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuites>
-  <testsuite name="./tests" tests="4" assertions="3" failures="0" errors="0" time="0.007523">
-    <testsuite name="VolunteerTest" file="Documents/communityservice/refactor/CST438Project_CommunityServiceApp/public/tests/VolunteerTest.php" tests="4" assertions="3" failures="0" errors="0" time="0.007523">
-      <testcase name="testThisMethod" class="VolunteerTest" file="Documents/communityservice/refactor/CST438Project_CommunityServiceApp/public/tests/VolunteerTest.php" line="9" assertions="1" time="0.007523"/>
-    </testsuite>
-  </testsuite>
-</testsuites>

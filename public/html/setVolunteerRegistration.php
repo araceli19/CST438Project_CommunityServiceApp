@@ -1,6 +1,7 @@
 <?php
 
 function getGoogleUser(){
+  try{
     $dbConnection = getDatabaseConnection();
     //global $dbConnection; //use global variable to call it anywhere in function
     $sql = "SELECT * FROM google_users WHERE google_id = :google_id";
@@ -8,10 +9,15 @@ function getGoogleUser(){
     $statement =  $dbConnection->prepare($sql);
     $statement->execute($namedParameters);
     return $statement->fetch(PDO::FETCH_ASSOC);
+  }
+  catch(Exception $e) {
+    echo 'Message: ' .$e->getMessage();
+  }
 
 }
 
 function getVolunteerInfo(){
+  try{
     $dbConnection = getDatabaseConnection();
   //global $dbConnection; //use global variable to call it anywhere in function
     $sql = "SELECT * FROM Volunteer WHERE ID = :ID";
@@ -19,10 +25,17 @@ function getVolunteerInfo(){
     $statement =  $dbConnection->prepare($sql);
     $statement->execute($namedParameters);
     return $statement->fetch(PDO::FETCH_ASSOC);
+  }
+  catch(Exception $e) {
+    echo 'Message: ' .$e->getMessage();
+  }
+
+
 }
 
 function insertIntoVolunteer($id, $dob, $school, $phoneNum, $name, $gender){
   //echo $orgId;
+  try{
   $dbConnection = getDatabaseConnection();
   $namedParameters = array();
     if(!empty($school)){
@@ -45,6 +58,11 @@ function insertIntoVolunteer($id, $dob, $school, $phoneNum, $name, $gender){
 
      $statement = $dbConnection->prepare($sql);
      $statement->execute($namedParameters);
+   }
+   catch(Exception $e) {
+     echo 'Message: ' .$e->getMessage();
+   }
+
 
 
  }
@@ -52,16 +70,29 @@ function insertIntoVolunteer($id, $dob, $school, $phoneNum, $name, $gender){
 function volunteerFormSubmition($orgId, $googleId){
   $dbConnection = getDatabaseConnection();
   //global $dbConnection; //use global variable to call it anywhere in function
-  $sql = "SELECT ID FROM Available_Services WHERE Organization_ID =:Organization_ID";
-  $statement =  $dbConnection->prepare($sql);
-  $namedParameters = array("Organization_ID"=>$orgId);
+    $sqlC = "SELECT ID FROM Available_Services WHERE Organization_ID =:Organization_ID";
+    try{
+    $sql = "SELECT ID FROM Available_Services WHERE Organization_ID =:Organization_ID";
+    $statement =  $dbConnection->prepare($sql);
+    $namedParameters = array("Organization_ID"=>$orgId);
 
-  $statement->execute($namedParameters);
-  $result =  $statement->fetch(PDO::FETCH_ASSOC);
-  $avId = $result['ID'];
+    $statement->execute($namedParameters);
+    $result =  $statement->fetch(PDO::FETCH_ASSOC);
+    $avId = $result['ID'];
+  }
+  catch(Exception $e) {
+    echo 'Message: ' .$e->getMessage();
+  }
+
 
      //print_r($statement);
 }
+function errorMessage() {
+    //error message
+    $errorMsg = 'Error on line '.$this->getLine().' in '.$this->getFile()
+    .': <b>'.$this->getMessage().'</b> is not a valid E-Mail address';
+    return $errorMsg;
+  }
 
 ?>
 <html>

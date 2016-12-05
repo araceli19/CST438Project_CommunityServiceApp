@@ -5,6 +5,7 @@ $dbConnection = getDatabaseConnection(); //use database connection from the data
 
 function getVolunteers(){
   //funcion that connects to database
+  try{
   global $dbConnection;
 
   $sql = "SELECT * FROM Volunteer";
@@ -14,7 +15,18 @@ function getVolunteers(){
   $records = $statement->fetchAll(PDO::FETCH_ASSOC);
 
  return $records;
+ }
+ catch(Exception $e) {
+   echo 'Message: ' .$e->getMessage();
+ }
+
 }
+function errorMessage() {
+    //error message
+    $errorMsg = 'Error on line '.$this->getLine().' in '.$this->getFile()
+    .': <b>'.$this->getMessage().'</b> is not a valid E-Mail address';
+    return $errorMsg;
+  }
 
 
 

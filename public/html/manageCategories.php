@@ -5,17 +5,25 @@ $dbConnection = getDatabaseConnection(); //use database connection from the data
 
 
 function getCategory(){
+
+    try{
     global $dbConnection;
     $sql = "SELECT * FROM Categories WHERE Category_ID = :Category_ID";
     $statement = $dbConnection->prepare($sql);
     $statement->execute(array(":Category_ID"=>$_GET['Category_ID']));
     $result = $statement->fetch(PDO::FETCH_ASSOC);
     return $result;
+  }
+
+    catch(Exception $e) {
+      echo 'Message: ' .$e->getMessage();
+    }
 }
 
 
 
 function getCategoryTypes() {
+  try{
     global $dbConnection;
 
     $sql = "SELECT Category
@@ -27,35 +35,51 @@ function getCategoryTypes() {
     //print_r($records);
 
     return $records;
+  }
+  catch(Exception $e) {
+    echo 'Message: ' .$e->getMessage();
+  }
+}
+
 
 }
 
 
 
 function getAllCategories() {
-    global $dbConnection;
 
-    $sql = "SELECT Category FROM Categories ORDER BY Category";
+  try{
+      global $dbConnection;
 
-    $statement = $dbConnection->prepare($sql);
-    $statement->execute();
-    $records = $statement->fetchAll(PDO::FETCH_ASSOC);
-    return $records;
-}
+      $sql = "SELECT Category FROM Categories ORDER BY Category";
+
+      $statement = $dbConnection->prepare($sql);
+      $statement->execute();
+      $records = $statement->fetchAll(PDO::FETCH_ASSOC);
+      return $records;
 
 
 
- if (isset($_POST['addForm'])) {
 
-     //ADD NEW CATEGORY
-     $sql = "INSERT INTO
-            (Category)
-            VALUES (:Category)";
-     $namedParameters = array();
-     $namedParameters[':Category'] = $_POST['Category'];
-     $statement = $dbConnection->prepare($sql);
-     $statement->execute($namedParameters);
-     echo "Category has been successfully added!";
+
+   if (isset($_POST['addForm'])) {
+
+       //ADD NEW CATEGORY
+       $sql = "INSERT INTO
+              (Category)
+              VALUES (:Category)";
+       $namedParameters = array();
+       $namedParameters[':Category'] = $_POST['Category'];
+       $statement = $dbConnection->prepare($sql);
+       $statement->execute($namedParameters);
+       echo "Category has been successfully added!";
+
+   }
+   }
+  }
+  catch(Exception $e) {
+    echo 'Message: ' .$e->getMessage();
+  }
 
  }
 

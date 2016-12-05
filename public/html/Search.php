@@ -11,25 +11,41 @@ $dbConnection = getDatabaseConnection();
 function getServices(){
   global $dbConnection; //use global variable to call it anywhere in function
 
-    $sql = "SELECT * FROM Available_Services";
+  try{
+
+
+    $sql = "SELECT * FROM Available_Services WHERE Volunteers_Needed > 0";
+
     $statement = $dbConnection->prepare($sql);
     $statement->execute();
     $records = $statement->fetchAll(PDO::FETCH_ASSOC);
-  return $records;
+          return $records;
+    }
+        //catch exception
+      catch(Exception $e) {
+        echo 'Message: ' .$e->getMessage();
+      }
 }
 function getCategories(){
   global $dbConnection; //use global variable to call it anywhere in function
 
-    $sql = "SELECT * FROM Categories";
-    $statement = $dbConnection->prepare($sql);
-    $statement->execute();
-    $records = $statement->fetchAll(PDO::FETCH_ASSOC);
-  return $records;
+  try{
+      $sql = "SELECT * FROM Categories";
+      $statement = $dbConnection->prepare($sql);
+      $statement->execute();
+      $records = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $records;
+  }
+  catch(Exception $e) {
+    echo 'Message: ' .$e->getMessage();
+  }
+
 }
 
 function getSearch(){
   global $dbConnection;
 
+  try{
    $sql = "SELECT *
            FROM Available_Services";
 
@@ -51,8 +67,19 @@ function getSearch(){
    $records = $statement->fetchAll(PDO::FETCH_ASSOC);
 
    return $records;
+ }
+ catch(Exception $e) {
+   echo 'Message: ' .$e->getMessage();
+ }
+
 
 }
+function errorMessage() {
+    //error message
+    $errorMsg = 'Error on line '.$this->getLine().' in '.$this->getFile()
+    .': <b>'.$this->getMessage().'</b> is not a valid E-Mail address';
+    return $errorMsg;
+  }
 
  ?>
 <html>

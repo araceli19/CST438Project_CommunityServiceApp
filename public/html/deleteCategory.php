@@ -1,20 +1,27 @@
 <?php
 
 session_start();
+  try{
 
+    include 'include/database.php';
+    $dbConnection = getDatabaseConnection('Categories');
 
+    $Category_ID = $_GET['Category'];
+    $sql = "DELETE FROM product WHERE Category = :Category";
+    $statement = $dbConnection->prepare($sql);
+    $statement->execute(array(":Category"=>$Category));
 
+    echo "Category has been deleted.";
+  }
+  catch(Exception $e) {
+    echo 'Message: ' .$e->getMessage();
+  }
 
-
-include 'include/database.php';
-$dbConnection = getDatabaseConnection('Categories');
-
-$Category_ID = $_GET['Category'];
-$sql = "DELETE FROM product WHERE Category = :Category";
-$statement = $dbConnection->prepare($sql);
-$statement->execute(array(":Category"=>$Category));
-
-echo "Category has been deleted.";
-
+  function errorMessage() {
+      //error message
+      $errorMsg = 'Error on line '.$this->getLine().' in '.$this->getFile()
+      .': <b>'.$this->getMessage().'</b> is not a valid E-Mail address';
+      return $errorMsg;
+    }
 
 ?>

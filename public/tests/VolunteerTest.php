@@ -5,7 +5,7 @@
 
 use PHPUnit\Framework\TestCase;
 
-include_once("public/lib/Volunteer.php");
+include_once("public/html/lib/Volunteer.php");
 
 class VolunteerTest extends TestCase
 {

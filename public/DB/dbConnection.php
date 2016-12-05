@@ -1,8 +1,7 @@
 <?php
 //connects to volunter database
 include_once("Database.php");
-
-class Volunteer{
+class dbConnection{
    public static $ID;
     public static $Name;
     public static $DOB;

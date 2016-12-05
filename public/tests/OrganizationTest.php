@@ -1,7 +1,7 @@
 <?php
 //testing Volunteer Organization with mock tests
 use PHPUnit\Framework\TestCase;
-include_once("public/lib/OrganizationConn.php");
+include_once("public/html/lib/OrganizationConn.php");
 
 class OrganizationTest extends TestCase
 {

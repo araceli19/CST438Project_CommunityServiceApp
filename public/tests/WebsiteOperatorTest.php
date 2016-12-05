@@ -1,7 +1,7 @@
 <?php
 //testing Website Operator table
 use PHPUnit\Framework\TestCase;
-include_once("public/lib/WebsiteOperatorConn.php");
+include_once("public/html/lib/WebsiteOperatorConn.php");
 
 class WebsiteOperatorTest extends TestCase
 {

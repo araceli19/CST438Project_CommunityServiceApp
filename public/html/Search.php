@@ -1,4 +1,7 @@
 <?php
+/*
+
+*/
 session_start(); //session start
 //this file is called for conneciton to database
 require_once ('../../libraries/Google/autoload.php');
@@ -6,26 +9,29 @@ include('include/database.php');
 include('gmailDB.php');
 $_SESSION['getId'] = $_POST['getId'];
 
+
 $dbConnection = getDatabaseConnection();
 
+//gets all services from database
 function getServices(){
-  global $dbConnection; //use global variable to call it anywhere in function
+    global $dbConnection; //use global variable to call it anywhere in function
 
-  try{
+    try{
 
 
-    $sql = "SELECT * FROM Available_Services WHERE Volunteers_Needed > 0";
+      $sql = "SELECT * FROM Available_Services WHERE Volunteers_Needed > 0";
 
-    $statement = $dbConnection->prepare($sql);
-    $statement->execute();
-    $records = $statement->fetchAll(PDO::FETCH_ASSOC);
-          return $records;
-    }
-        //catch exception
-      catch(Exception $e) {
-        echo 'Message: ' .$e->getMessage();
+      $statement = $dbConnection->prepare($sql);
+      $statement->execute();
+      $records = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $records;
       }
+          //catch exception
+        catch(Exception $e) {
+          echo 'Message: ' .$e->getMessage();
+        }
 }
+//gets all categories stored in database
 function getCategories(){
   global $dbConnection; //use global variable to call it anywhere in function
 
@@ -42,42 +48,45 @@ function getCategories(){
 
 }
 
+//
 function getSearch(){
+  //When users searchers for all available services
   global $dbConnection;
 
-  try{
-   $sql = "SELECT *
-           FROM Available_Services";
+    try{
+     $sql = "SELECT *
+             FROM Available_Services";
 
-   if(isset($_POST['search']))
-   {
-       $query = $_POST['search'];
-       $sql .= " WHERE Name_Of_Service
-                LIKE '%$query%'";
+     if(isset($_POST['search']))
+     {
+         $query = $_POST['search'];
+         $sql .= " WHERE Name_Of_Service
+                  LIKE '%$query%' AND Volunteers_Needed > 0";
+     }
+
+     if(!empty($_POST['categories']) && $_POST['categories'] !== "All")
+     {
+         $catID = $_POST['categories'];
+         $sql .= " AND Category_ID = $catID";
+     }
+
+     $statement = $dbConnection->prepare($sql);
+     $statement->execute();
+     $records = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+     return $records;
    }
-
-   if(!empty($_POST['categories']) && $_POST['categories'] !== "All")
-   {
-       $catID = $_POST['categories'];
-       $sql .= " AND Category_ID = $catID";
+   catch(Exception $e) {
+     echo 'Message: ' .$e->getMessage();
    }
-
-   $statement = $dbConnection->prepare($sql);
-   $statement->execute();
-   $records = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-   return $records;
- }
- catch(Exception $e) {
-   echo 'Message: ' .$e->getMessage();
- }
 
 
 }
+
+//error on page message
 function errorMessage() {
     //error message
-    $errorMsg = 'Error on line '.$this->getLine().' in '.$this->getFile()
-    .': <b>'.$this->getMessage().'</b> is not a valid E-Mail address';
+    $errorMsg = 'Error!';
     return $errorMsg;
   }
 
@@ -131,7 +140,7 @@ function errorMessage() {
         echo "Search found :<br/>";
         echo "<table style=\"font-family:arial;color:#333333;\">";
                 echo "<tr><td style=\"border-style:solid;border-width:1px;border-color:#98bf21;
-                background:#98bf21;\">Name of Serivice
+                background:#98bf21;\">Name of Service
                 </td><td style=\"border-style:solid;border-width:1px;
                 border-color:#98bf21;background:#98bf21;\">Description
                 </td><td style=\"border-style:solid;

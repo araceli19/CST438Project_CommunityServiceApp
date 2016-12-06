@@ -1,5 +1,5 @@
 <?php
-
+//file for deleting Category
 session_start();
   try{
 
@@ -19,8 +19,7 @@ session_start();
 
   function errorMessage() {
       //error message
-      $errorMsg = 'Error on line '.$this->getLine().' in '.$this->getFile()
-      .': <b>'.$this->getMessage().'</b> is not a valid E-Mail address';
+      $errorMsg = 'Error!';
       return $errorMsg;
     }
 

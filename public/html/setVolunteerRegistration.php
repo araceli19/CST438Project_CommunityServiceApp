@@ -1,5 +1,4 @@
 <?php
-
 function getGoogleUser(){
   try{
     $dbConnection = getDatabaseConnection();
@@ -14,6 +13,25 @@ function getGoogleUser(){
     echo 'Message: ' .$e->getMessage();
   }
 
+}
+
+function getServices(){
+  $dbConnection = getDatabaseConnection();//use global variable to call it anywhere in function
+
+  try{
+
+
+    $sql = "SELECT * FROM Available_Services WHERE Volunteers_Needed > 0";
+
+    $statement = $dbConnection->prepare($sql);
+    $statement->execute();
+    $records = $statement->fetchAll(PDO::FETCH_ASSOC);
+          return $records;
+    }
+        //catch exception
+      catch(Exception $e) {
+        echo 'Message: ' .$e->getMessage();
+      }
 }
 
 function getVolunteerInfo(){
@@ -35,8 +53,9 @@ function getVolunteerInfo(){
 
 function insertIntoVolunteer($id, $dob, $school, $phoneNum, $name, $gender){
   //echo $orgId;
-  try{
   $dbConnection = getDatabaseConnection();
+  try{
+
   $namedParameters = array();
     if(!empty($school)){
         $sql = "INSERT INTO Volunteer
@@ -67,30 +86,41 @@ function insertIntoVolunteer($id, $dob, $school, $phoneNum, $name, $gender){
 
  }
 
-function volunteerFormSubmition($orgId, $googleId){
-  $dbConnection = getDatabaseConnection();
-  //global $dbConnection; //use global variable to call it anywhere in function
-    $sqlC = "SELECT ID FROM Available_Services WHERE Organization_ID =:Organization_ID";
-    try{
-    $sql = "SELECT ID FROM Available_Services WHERE Organization_ID =:Organization_ID";
+function volunteerFormSubmition($googleId, $avId){
+
+
+    $dbConnection = getDatabaseConnection();
+    $sql = "SELECT Organization_ID FROM Available_Services WHERE ID = :ID";
     $statement =  $dbConnection->prepare($sql);
-    $namedParameters = array("Organization_ID"=>$orgId);
+    $namedParameters = array("ID"=>$avId);
 
     $statement->execute($namedParameters);
     $result =  $statement->fetch(PDO::FETCH_ASSOC);
-    $avId = $result['ID'];
-  }
-  catch(Exception $e) {
-    echo 'Message: ' .$e->getMessage();
-  }
+    $orgaID = $result['Organization_ID'];
+  //  echo $avId;
+    $sql3 = "UPDATE Available_Services set Volunteers_Needed = Volunteers_Needed - 1 WHERE ID = :ID";
+
+                $namedParameters3 = array("ID"=>$avId);
+                $statement3 = $dbConnection->prepare($sql3);
+                $statement3->execute($namedParameters3);
 
 
-     //print_r($statement);
+              $namedParameters2 = array();
+                $sql2 = "INSERT INTO Pending_Volunteers
+                  (Volunteer_ID, Organization_ID, Available_ID)
+                  VALUES(:Volunteer_ID, :Organization_ID, :Available_ID)";
+
+                  $namedParameters2[':Volunteer_ID'] = $googleId; //caming from form
+                  $namedParameters2[':Organization_ID'] = $orgaID;
+                  $namedParameters2[':Available_ID'] = $avId;
+                  $statement2 = $dbConnection->prepare($sql2);
+                  $statement2->execute($namedParameters2);
+
 }
+
 function errorMessage() {
     //error message
-    $errorMsg = 'Error on line '.$this->getLine().' in '.$this->getFile()
-    .': <b>'.$this->getMessage().'</b> is not a valid E-Mail address';
+    $errorMsg = 'Error!';
     return $errorMsg;
   }
 

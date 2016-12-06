@@ -1,5 +1,8 @@
 <?php
+/*
+  BY: Araceli Gopar & Noemi Cuin
 
+*/
 include('include/database.php');
 $dbConnection = getDatabaseConnection(); //use database connection from the database file
 
@@ -23,11 +26,9 @@ function getVolunteers(){
 }
 function errorMessage() {
     //error message
-    $errorMsg = 'Error on line '.$this->getLine().' in '.$this->getFile()
-    .': <b>'.$this->getMessage().'</b> is not a valid E-Mail address';
+    $errorMsg = 'Error!';
     return $errorMsg;
   }
-
 
 
 /*
@@ -78,31 +79,9 @@ Search: <input type="text" name="search" placeholder="Users"/>
   <?php
 
 
-
   if(isset($_POST['searchForm'])){
     //if statement checks if the user called for a search, then searches for the data
       $volunteer = getVolunteers();
-/* Code Smells: Temporary Field, Middle Man, and Dispensables
-       echo "Search found :<br/>";
-        echo "<table style=\"font-family:arial;color:#333333;\">";
-                echo "<tr><td style=\"border-style:solid;border-width:1px;border-color:#98bf21;
-                background:#98bf21;\">Name</td><td style=\"border-style:solid;border-width:1px;
-                border-color:#98bf21;background:#98bf21;\">DOB</td><td style=\"border-style:solid;
-                border-width:1px;border-color:#98bf21;background:#98bf21;\">School</td></tr>";
-
-
-          foreach($parameter as $vol){
-            echo "<tr><td style=\"border-style:solid;border-width:1px;border-color:#98bf21;\">";
-                    echo $vol['Name'];
-            echo "</td><td style=\"border-style:solid;border-width:1px;border-color:#98bf21;\">";
-                    echo $vol['DOB'];
-            echo "</td><td style=\"border-style:solid;border-width:1px;border-color:#98bf21;\">";
-                    echo $vol['School'];
-            echo "</td></tr>";
-          }
-
-          echo "</table>";
-*/
 
  // Refractor Solution 3: Inline Method
  // Refactor Soultion 4: Introduce Parameter Object

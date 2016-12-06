@@ -1,4 +1,8 @@
 <?php
+/*
+Form for a volunteer to register
+
+*/
 session_start();
 include('include/database.php');
 include('setVolunteerRegistration.php');
@@ -6,16 +10,58 @@ include('setVolunteerRegistration.php');
 $id = $_POST['getId'];
 $googleId = $_SESSION['userId'];
 $orgId = $_SESSION['orgId'];
+$nameService = $_SESSION['nameService'];
+
 
 $gUser= getGoogleUser();
+//gets all user if they are in database
   if(!empty($gUser)){  $name =  $gUser['google_name'];  $email = $gUser['google_email']; }
   else{  $name =  ""; $email = ""; }
 
 $getVolunteer = getVolunteerInfo();
+//gets all the information of volunteers if it is set
   if($getVolunteer){ $nameV =  $getVolunteer['Name']; $dob = $getVolunteer['DOB']; $gender = $getVolunteer['Gender'];
                      $school = $getVolunteer['School']; $phoneNum = $getVolunteer['Phone_Num'];}
   else{  $nameV="";  $school="";
          $phoneNum=""; $gender = ""; }
+         if(isset($_POST["terms"]) && isset($_POST["userEmail"]) && isset($_POST["submit"])){
+                if(isset($_POST['school']))  $school = $_POST["school"];
+                if(isset($_POST['DOB'])) $dob = $_POST['DOB'];
+                if(isset($_POST['phoneNum'])) $phoneNum = $_POST['phoneNum'];
+                if(isset($_POST['gender'])) $gender = $_POST['gender'];
+
+                $pattern = "/^[0-9\_]{7,20}/";
+                $pattern2 = "/^(0[1-9]|[1-2][0-9]|3[0-1]-(0[1-9]|1[0-2])-[0-9]{4})/";
+                if (!preg_match($pattern,$phoneNum)){
+                    echo "<div  style=color:Red;>"; echo "<br>";
+                        echo 'Phone number can only be 10 digits (format: ##########).';
+                    echo "</div>";
+
+                  }
+
+                else if (!preg_match($pattern2,$dob))
+                  {
+                    echo "<div align='center' style=color:Red;>";  echo "<br>";
+                        echo 'DOB has the wrong format!.';
+                    echo "</div>";
+                  }
+              else{
+
+                    if(empty($getVolunteer)) insertIntoVolunteer($googleId, $dob, $school, $phoneNum, $name, $gender);
+                    volunteerFormSubmition($googleId, $id);
+
+                        echo "<div  align='center' style=color:Red;>";
+                          echo '<script type="text/javascript" class="alert alert-success">';
+                            echo 'alert("You have registered successfully!");';
+                            echo 'window.location.href = "../../index.php";';
+                          echo '</script>';
+                          unset($_POST);
+                        echo "</div>";
+
+                      }
+
+        }
+
  ?>
 
 <html>
@@ -108,41 +154,5 @@ $getVolunteer = getVolunteerInfo();
                       <div><input type="submit" class="btnRegister" name="submit" value="Register"/></div>
               </form>
 
-             <?php
-               /* Validation to check if Terms and Conditions are accepted */
-                 if(isset($_POST["terms"]) && isset($_POST["userEmail"]) && isset($_POST["submit"])){
-                        if(isset($_POST['school']))  $school = $_POST["school"];
-                        if(isset($_POST['DOB'])) $dob = $_POST['DOB'];
-                        if(isset($_POST['phoneNum'])) $phoneNum = $_POST['phoneNum'];
-                        if(isset($_POST['gender'])) $gender = $_POST['gender'];
-
-                        $pattern = "/^[0-9\_]{7,20}/";
-                        $pattern2 = "/^(0[1-9]|[1-2][0-9]|3[0-1]-(0[1-9]|1[0-2])-[0-9]{4})/";
-                        if (!preg_match($pattern,$phoneNum)){
-                            echo "<div  style=color:Red;>"; echo "<br>";
-                                echo 'Phone number can only be 10 digits (format: ##########).';
-                            echo "</div>";
-                          }
-
-                        else if (!preg_match($pattern2,$dob))
-                          {
-                            echo "<div align='center' style=color:Red;>";  echo "<br>";
-                                echo 'DOB has the wrong format!.';
-                            echo "</div>";
-                          }
-                      else{
-                            if(empty($getVolunteer)) insertIntoVolunteer($googleId, $dob, $school, $phoneNum, $name, $gender);
-
-                            volunteerFormSubmition($orgId, $googleId);
-                                echo "<div  align='center' style=color:Red;>";
-                                  echo '<script type="text/javascript" class="alert alert-success">';
-                                    echo 'alert("You have registered successfully!");';
-                                    echo 'window.location.href = "../../index.php";';
-                                  echo '</script>';
-                                  unset($_POST);
-                                echo "</div>";
-                            }
-                }
-              ?>
           </body>
 </html>

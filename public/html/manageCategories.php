@@ -1,11 +1,13 @@
-<?php
 
+<?php
+/*
+  
+*/
 include('include/database.php');
 $dbConnection = getDatabaseConnection(); //use database connection from the database file
 
-
 function getCategory(){
-
+  //gets all categories
     try{
     global $dbConnection;
     $sql = "SELECT * FROM Categories WHERE Category_ID = :Category_ID";
@@ -23,6 +25,7 @@ function getCategory(){
 
 
 function getCategoryTypes() {
+  //gets the type of category
   try{
     global $dbConnection;
 
@@ -42,12 +45,12 @@ function getCategoryTypes() {
 }
 
 
-}
+
 
 
 
 function getAllCategories() {
-
+  //one category
   try{
       global $dbConnection;
 
@@ -76,12 +79,17 @@ function getAllCategories() {
 
    }
    }
-  }
+
   catch(Exception $e) {
     echo 'Message: ' .$e->getMessage();
   }
 
  }
+ function errorMessage() {
+     //error message
+     $errorMsg = 'Error!';
+     return $errorMsg;
+   }
 
 
 ?>

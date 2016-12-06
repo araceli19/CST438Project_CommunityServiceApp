@@ -3,21 +3,7 @@
 
 include_once("Database.php"); //connects to the database
 class AvailableServices{
-  /*
-  CREATE TABLE Available_Services(
-  ID INT(6) PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  Organization_ID INT(6),
-  Category_ID smallint(6) NOT NULL,
-  Hours_Available DOUBLE(10,2) NOT NULL,
-  Volunteers_Needed INT(3) NOT NULL,
-  Description VARCHAR(200) NOT NULL,
-  Name_Of_Service VARCHAR(50) NOT NULL,
-  Phone_Num VARCHAR(13) NOT NULL,
-  FOREIGN KEY (Category_ID) REFERENCES Categories (Category_ID),
-  FOREIGN KEY (Organization_ID) REFERENCES Volunteer_Organization (ID)
-  )ENGINE=MyISAM DEFAULT CHARSET=utf8;
-*/
-
+  
     public static $ID;
     public static $Organization_ID;
     public static $Category_ID;
